@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ServicesReqestsView" customModule="IdrisCar" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="kf1-5h-cki" id="DE6-je-xD1"/>
+                <outlet property="container" destination="dPu-Nd-cqT" id="eBI-kZ-xja"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kf1-5h-cki">
+                    <rect key="frame" x="16" y="59" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="hEc-h6-bRD"/>
+                        <constraint firstAttribute="width" constant="48" id="tKT-b6-cYZ"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="backButton"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="invertedLoc" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Services Requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ca-0H-c0j">
+                    <rect key="frame" x="119.00000000000001" y="72" width="155.33333333333337" height="22"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Services Requests"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPu-Nd-cqT">
+                    <rect key="frame" x="20" y="127" width="353" height="691"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="dPu-Nd-cqT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ESr-57-xZ5"/>
+                <constraint firstItem="kf1-5h-cki" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="a3c-ze-rqj"/>
+                <constraint firstItem="kf1-5h-cki" firstAttribute="centerY" secondItem="0Ca-0H-c0j" secondAttribute="centerY" id="iFp-Su-Zh1"/>
+                <constraint firstItem="0Ca-0H-c0j" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kVV-FR-Lgj"/>
+                <constraint firstItem="kf1-5h-cki" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="mcg-A7-GyG"/>
+                <constraint firstItem="dPu-Nd-cqT" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="oJG-02-Yxk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dPu-Nd-cqT" secondAttribute="trailing" constant="20" id="tzK-HP-Nlb"/>
+                <constraint firstItem="dPu-Nd-cqT" firstAttribute="top" secondItem="kf1-5h-cki" secondAttribute="bottom" constant="20" id="yxg-Qj-Npw"/>
+            </constraints>
+            <point key="canvasLocation" x="54" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backButton" width="48" height="48"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

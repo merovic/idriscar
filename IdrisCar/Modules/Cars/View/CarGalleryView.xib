@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarGalleryView" customModule="IdrisCar" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="KQZ-u8-2Se" id="21E-lW-wQ3"/>
+                <outlet property="container" destination="EPy-kb-SVL" id="Qph-xP-8kc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-u8-2Se">
+                    <rect key="frame" x="16" y="59" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="Dmq-Jv-qi6"/>
+                        <constraint firstAttribute="height" constant="48" id="JYd-U7-n1o"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="backButton"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="invertedLoc" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Gallery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05n-5D-xvY">
+                    <rect key="frame" x="134.33333333333334" y="72.333333333333329" width="124.66666666666666" height="21.666666666666671"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Vehicle Gallery"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EPy-kb-SVL">
+                    <rect key="frame" x="16" y="115" width="361" height="703"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="05n-5D-xvY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Hud-W8-yod"/>
+                <constraint firstItem="KQZ-u8-2Se" firstAttribute="centerY" secondItem="05n-5D-xvY" secondAttribute="centerY" id="Kq2-D5-zMq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EPy-kb-SVL" secondAttribute="trailing" constant="16" id="SzL-q8-Uou"/>
+                <constraint firstItem="KQZ-u8-2Se" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="dXI-Si-hIz"/>
+                <constraint firstItem="EPy-kb-SVL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="jhX-hK-b6w"/>
+                <constraint firstItem="EPy-kb-SVL" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="oHE-ho-Y9z"/>
+                <constraint firstItem="KQZ-u8-2Se" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="rgE-a4-cVK"/>
+                <constraint firstItem="EPy-kb-SVL" firstAttribute="top" secondItem="KQZ-u8-2Se" secondAttribute="bottom" constant="8" symbolic="YES" id="y4k-Vx-T0z"/>
+            </constraints>
+            <point key="canvasLocation" x="17.557251908396946" y="20.422535211267608"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backButton" width="48" height="48"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EnterOTPView" customModule="IdrisCar" customModuleProvider="target">
+            <connections>
+                <outlet property="verifyEmailButton" destination="TgW-VU-wyf" id="1Kv-Fi-Zbm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3r-D0-61v">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="380"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqF-d1-Tyx">
+                            <rect key="frame" x="8" y="70" width="36" height="36"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="back"/>
+                            <connections>
+                                <action selector="backPressed:" destination="-1" eventType="touchUpInside" id="191-Sz-aWG"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your account now" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgg-je-5ub">
+                            <rect key="frame" x="16" y="114" width="361" height="114.66666666666669"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="48"/>
+                            <color key="textColor" white="0.97176387470000003" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Verify your account now"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finder is a leading digital marketplace for the automotive industry that connects car shoppers with sellers." lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEy-EB-3L1">
+                            <rect key="frame" x="16" y="244.66666666666666" width="361" height="57.333333333333343"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="0.97176387470000003" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Finder is a leading digital marketplace for the automotive industry that connects car shoppers with sellers."/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="AccentColor"/>
+                    <constraints>
+                        <constraint firstItem="pqF-d1-Tyx" firstAttribute="top" secondItem="f3r-D0-61v" secondAttribute="top" constant="70" id="D3y-X0-i3D"/>
+                        <constraint firstItem="aEy-EB-3L1" firstAttribute="leading" secondItem="f3r-D0-61v" secondAttribute="leading" constant="16" id="DLI-c2-EVj"/>
+                        <constraint firstItem="Qgg-je-5ub" firstAttribute="top" secondItem="pqF-d1-Tyx" secondAttribute="bottom" constant="8" symbolic="YES" id="dTH-yL-iNs"/>
+                        <constraint firstItem="pqF-d1-Tyx" firstAttribute="leading" secondItem="f3r-D0-61v" secondAttribute="leading" constant="8" id="g9q-Uh-wMx"/>
+                        <constraint firstAttribute="height" constant="380" id="lP6-be-D4d"/>
+                        <constraint firstItem="aEy-EB-3L1" firstAttribute="top" secondItem="Qgg-je-5ub" secondAttribute="bottom" constant="16" id="qWg-zA-rz3"/>
+                        <constraint firstItem="Qgg-je-5ub" firstAttribute="leading" secondItem="f3r-D0-61v" secondAttribute="leading" constant="16" id="sTk-mg-k0p"/>
+                        <constraint firstAttribute="trailing" secondItem="aEy-EB-3L1" secondAttribute="trailing" constant="16" id="ttG-Kh-LzE"/>
+                        <constraint firstAttribute="trailing" secondItem="Qgg-je-5ub" secondAttribute="trailing" constant="16" id="wVf-Rl-Sh5"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgW-VU-wyf">
+                    <rect key="frame" x="16" y="708" width="361" height="60"/>
+                    <color key="backgroundColor" name="AccentColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="vvm-xK-oM6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Verify Email">
+                        <color key="titleColor" white="0.97176387470000003" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Verify Email"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="verifyEmailClicked:" destination="-1" eventType="touchUpInside" id="6lm-mK-Cxa"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBo-kl-Qvq">
+                    <rect key="frame" x="16" y="412" width="149.33333333333334" height="38.333333333333314"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Enter OTP"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Na4-3I-Qvl">
+                    <rect key="frame" x="16" y="458.33333333333331" width="178.66666666666666" height="43.333333333333314"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sent a one-time code to" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHe-pg-ef1">
+                            <rect key="frame" x="0.0" y="0.0" width="178.66666666666666" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20784313730000001" green="0.2470588235" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="We sent a one-time code to"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+20 1093 837 805" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmI-5d-p2r">
+                            <rect key="frame" x="0.0" y="24" width="141" height="19.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSl-b7-zpg" customClass="CustomCodeView" customModule="IdrisCar">
+                    <rect key="frame" x="16" y="517.66666666666663" width="297" height="54"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="PPQ-sZ-1gE"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="length">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X1a-9u-X0I">
+                    <rect key="frame" x="16.000000000000014" y="587.66666666666663" width="248.33333333333337" height="30"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Didn't receive the Code?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tL1-m0-9Yc">
+                            <rect key="frame" x="0.0" y="5" width="187.33333333333334" height="20.333333333333332"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.30880008377395307" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Didn't receive the Code?"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdM-hT-UfD">
+                            <rect key="frame" x="197.33333333333334" y="0.0" width="51" height="30"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="resend">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="resend"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="TgW-VU-wyf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="1wr-B7-iKh"/>
+                <constraint firstItem="X1a-9u-X0I" firstAttribute="top" secondItem="uSl-b7-zpg" secondAttribute="bottom" constant="16" id="6pA-bN-xti"/>
+                <constraint firstItem="f3r-D0-61v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DxL-Le-6Xw"/>
+                <constraint firstItem="X1a-9u-X0I" firstAttribute="leading" secondItem="uSl-b7-zpg" secondAttribute="leading" id="KX8-QC-WTa"/>
+                <constraint firstItem="WBo-kl-Qvq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Mmb-ff-OTc"/>
+                <constraint firstItem="uSl-b7-zpg" firstAttribute="top" secondItem="Na4-3I-Qvl" secondAttribute="bottom" constant="16" id="X4B-NL-bCq"/>
+                <constraint firstItem="Na4-3I-Qvl" firstAttribute="top" secondItem="WBo-kl-Qvq" secondAttribute="bottom" constant="8" id="XOB-68-e2c"/>
+                <constraint firstItem="Na4-3I-Qvl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="dNR-Op-964"/>
+                <constraint firstAttribute="trailing" secondItem="f3r-D0-61v" secondAttribute="trailing" id="e7U-ev-nMt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uSl-b7-zpg" secondAttribute="trailing" constant="80" id="ew4-AA-HFv"/>
+                <constraint firstItem="WBo-kl-Qvq" firstAttribute="top" secondItem="f3r-D0-61v" secondAttribute="bottom" constant="32" id="rTf-QK-KEZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TgW-VU-wyf" secondAttribute="trailing" constant="16" id="sMd-a7-BK6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="TgW-VU-wyf" secondAttribute="bottom" constant="50" id="vdU-Fj-xZE"/>
+                <constraint firstItem="f3r-D0-61v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wwA-aB-6am"/>
+                <constraint firstItem="uSl-b7-zpg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="xGU-3u-hl9"/>
+            </constraints>
+            <point key="canvasLocation" x="17.557251908396946" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back" width="36" height="36"/>
+        <namedColor name="AccentColor">
+            <color red="0.94099998474121094" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

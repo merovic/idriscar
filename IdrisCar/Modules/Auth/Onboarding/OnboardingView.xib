@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingView" customModule="IdrisCar" customModuleProvider="target">
+            <connections>
+                <outlet property="getStartedButton" destination="70M-hY-Cvb" id="kXZ-aX-2II"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="ZwF-LH-dAx">
+                    <rect key="frame" x="0.0" y="0.0" width="440" height="550"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="550" id="70Z-Nu-7no"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70M-hY-Cvb">
+                    <rect key="frame" x="16" y="854" width="408" height="60"/>
+                    <color key="backgroundColor" name="AccentColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="XH2-u6-xIs"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Get Started">
+                        <color key="titleColor" white="0.97176387470000003" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Get Started"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="getStartedClicked:" destination="-1" eventType="touchUpInside" id="OLj-ML-o8o"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's get Started" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxg-6C-9b8">
+                    <rect key="frame" x="119" y="566" width="202" height="32"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Let's get Started"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSJ-ys-kGb">
+                    <rect key="frame" x="16" y="618" width="408" height="81.333333333333371"/>
+                    <string key="text">As a company with many subsidiaries, our internal core values connect and align all of our sub-brands in a cohesive manner while staying true to our essence and identity.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.30588235294117649" green="0.33333333333333331" blue="0.38431372549019605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizedText">
+                            <string key="value">As a company with many subsidiaries, our internal core values connect and align all of our sub-brands in a cohesive manner while staying true to our essence and identity.</string>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="70M-hY-Cvb" secondAttribute="trailing" constant="16" id="E1O-e9-GZV"/>
+                <constraint firstItem="ZwF-LH-dAx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EPU-v0-kOd"/>
+                <constraint firstItem="PSJ-ys-kGb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="K8Q-OY-ufb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="70M-hY-Cvb" secondAttribute="bottom" constant="8" id="U6I-dM-OC0"/>
+                <constraint firstItem="vxg-6C-9b8" firstAttribute="top" secondItem="ZwF-LH-dAx" secondAttribute="bottom" constant="16" id="bYE-qx-1gL"/>
+                <constraint firstItem="70M-hY-Cvb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="hMk-uE-VaZ"/>
+                <constraint firstItem="ZwF-LH-dAx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hTA-Ip-QCZ"/>
+                <constraint firstItem="vxg-6C-9b8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="s0J-CB-7uv"/>
+                <constraint firstItem="ZwF-LH-dAx" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="syW-q3-kuf"/>
+                <constraint firstItem="PSJ-ys-kGb" firstAttribute="top" secondItem="vxg-6C-9b8" secondAttribute="bottom" constant="20" id="vI3-dE-T8p"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PSJ-ys-kGb" secondAttribute="trailing" constant="16" id="zDx-9R-MWh"/>
+            </constraints>
+            <point key="canvasLocation" x="17.557251908396946" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="onboarding" width="430" height="645"/>
+        <namedColor name="AccentColor">
+            <color red="0.94099998474121094" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

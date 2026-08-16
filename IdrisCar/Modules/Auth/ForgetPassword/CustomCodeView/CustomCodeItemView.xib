@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="alR-uz-JSz" customClass="CustomCodeItemView" customModule="IdrisCar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFz-Kg-5Lr" userLabel="ContentView">
+                    <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SB9-cN-1uh" userLabel="BorderView">
+                            <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Rf-O7-30M" customClass="SwiftyCodeTextField" customModule="SwiftyCodeView">
+                            <rect key="frame" x="0.0" y="16.5" width="54" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="SB9-cN-1uh" secondAttribute="trailing" id="1Qw-Iy-BTJ"/>
+                        <constraint firstAttribute="height" constant="54" id="M2Z-d5-rGi"/>
+                        <constraint firstAttribute="bottom" secondItem="SB9-cN-1uh" secondAttribute="bottom" id="Rtb-mN-Jc8"/>
+                        <constraint firstItem="SB9-cN-1uh" firstAttribute="leading" secondItem="aFz-Kg-5Lr" secondAttribute="leading" id="SPk-tv-7lu"/>
+                        <constraint firstItem="1Rf-O7-30M" firstAttribute="leading" secondItem="aFz-Kg-5Lr" secondAttribute="leading" id="XOY-7I-UVo"/>
+                        <constraint firstAttribute="trailing" secondItem="1Rf-O7-30M" secondAttribute="trailing" id="cB0-Zf-Cre"/>
+                        <constraint firstItem="1Rf-O7-30M" firstAttribute="centerY" secondItem="SB9-cN-1uh" secondAttribute="centerY" id="dU6-Y5-rD4"/>
+                        <constraint firstAttribute="width" constant="54" id="duk-RA-7en"/>
+                        <constraint firstItem="SB9-cN-1uh" firstAttribute="top" secondItem="aFz-Kg-5Lr" secondAttribute="top" id="fCK-Ev-KIn"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="aFz-Kg-5Lr" firstAttribute="top" secondItem="alR-uz-JSz" secondAttribute="top" id="BbJ-qf-5nL"/>
+                <constraint firstAttribute="trailing" secondItem="aFz-Kg-5Lr" secondAttribute="trailing" id="RBs-rl-anM"/>
+                <constraint firstItem="aFz-Kg-5Lr" firstAttribute="leading" secondItem="alR-uz-JSz" secondAttribute="leading" id="bnU-ML-yll"/>
+                <constraint firstAttribute="bottom" secondItem="aFz-Kg-5Lr" secondAttribute="bottom" id="e3F-Kk-l5Q"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="borderView" destination="SB9-cN-1uh" id="erh-zI-wUX"/>
+                <outlet property="itemHeight" destination="M2Z-d5-rGi" id="6b5-mW-Bwx"/>
+                <outlet property="itemWidth" destination="duk-RA-7en" id="4e1-Oq-Hh9"/>
+                <outlet property="textField" destination="1Rf-O7-30M" id="jTi-tp-4lS"/>
+            </connections>
+            <point key="canvasLocation" x="-4.7999999999999998" y="-5.3973013493253381"/>
+        </view>
+    </objects>
+</document>

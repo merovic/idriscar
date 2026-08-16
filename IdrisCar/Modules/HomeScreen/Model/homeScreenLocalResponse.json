@@ -1,0 +1,194 @@
+{
+    "success": true,
+    "status_code": 200,
+    "message": "Retrieve Lists",
+    "data": {
+        "slideshow": [
+            {
+                "id": 2,
+                "name": "اعلان 2",
+                "image": "slideshow/01JMW879ZQT9T49EC5B5SFWJWM.jpg",
+                "link": "http://localhost:8000/admin/slideshows/create",
+                "description": "hzsgcjhzgxjchgzxjchgzjxhcgjzhxgcjzgxcjhgzjxc"
+            },
+            {
+                "id": 1,
+                "name": "اعلان عن سيارة توتا لعرض رمضان",
+                "image": "slideshow/01JMW8389Q71S2HMAV867Z48Z0.jpg",
+                "link": "https://www.figma.com/proto/mAz4Gt4znNnRQtVZxBagEQ/Idris-Website?node-id=39-98",
+                "description": "<p dir=\"rtl\">اعلان مميز لزيارة فريدة من نوعها ......</p>"
+            }
+        ],
+        "brands": [
+            {
+                "id": 1,
+                "name": "Mercedes-Benz",
+                "image": "mercedes_logo.jpg",
+                "description": "Luxury and performance combined in every Mercedes-Benz.",
+                "slug": "mercedes-benz",
+                "link": "https://example.com/mercedes-benz"
+            },
+            {
+                "id": 2,
+                "name": "Opel",
+                "image": "opel_logo.jpg",
+                "description": "Innovative German engineering with a focus on efficiency.",
+                "slug": "opel",
+                "link": "https://example.com/opel"
+            },
+            {
+                "id": 3,
+                "name": "Volkswagen",
+                "image": "volkswagen_logo.jpg",
+                "description": "Reliable and stylish cars from one of the world's biggest automakers.",
+                "slug": "volkswagen",
+                "link": "https://example.com/volkswagen"
+            },
+            {
+                "id": 4,
+                "name": "Mini Cooper",
+                "image": "mini_cooper_logo.jpg",
+                "description": "Iconic design and agile performance with Mini Cooper.",
+                "slug": "mini-cooper",
+                "link": "https://example.com/mini-cooper"
+            }
+        ],
+        "cars": [
+            {
+                "id": 1,
+                "name": "Car 1",
+                "image": "car/01JMWAXWX27JQM7ZM5AHACE9NJ.jpg",
+                "slug": "syar-1",
+                "year": 2025,
+                "price": 6000,
+                "old_price": 65000,
+                "installment_starts_from": 1000,
+                "brand": "Toyota",
+                "model": "",
+                "version": "",
+                "body_type": "",
+                "status_sticker": "",
+                "is_favorite": false,
+                "is_price_hide": 0,
+                "is_request_button_hide": 0
+            },
+            {
+                "id": 2,
+                "name": "Car 2",
+                "image": "car/01JMWDCN19TJZQF5M2FRH66RCM.jpg",
+                "slug": "syar-2",
+                "year": 2025,
+                "price": 100000,
+                "old_price": 105000,
+                "installment_starts_from": 2500,
+                "brand": "Toyota",
+                "model": "",
+                "version": "",
+                "body_type": "",
+                "status_sticker": "",
+                "is_favorite": false,
+                "is_price_hide": 0,
+                "is_request_button_hide": 0
+            },
+            {
+                "id": 3,
+                "name": "Car 3",
+                "image": "car/01JN09TKC33FW0D93GXA7GBSQ7.png",
+                "slug": "syar-3",
+                "year": 2026,
+                "price": 100000,
+                "old_price": 120000,
+                "installment_starts_from": 3000,
+                "brand": "Toyota",
+                "model": "",
+                "version": "",
+                "body_type": "",
+                "status_sticker": "",
+                "is_favorite": false,
+                "is_price_hide": 0,
+                "is_request_button_hide": 0
+            }
+        ],
+        "agency_information": [
+            {
+                "id": 1,
+                "name": "Thor Bonner",
+                "image": "static-content/01JHHMEQ3DYDJF64BEZQAC5RQG.jpeg",
+                "description": "Est saepe nulla omn"
+            },
+            {
+                "id": 2,
+                "name": "Aristotle Savage",
+                "image": "static-content/01JHHMN2RHEVNTV78TBVYETK29.jpeg",
+                "description": "Description ar\n"
+            },
+            {
+                "id": 15,
+                "name": "Aristotle Savage",
+                "image": "static-content/01JHHMN2RHEVNTV78TBVYETK29.jpeg",
+                "description": "Description ar\n"
+            }
+        ],
+        "services": [
+            {
+                "id": 1,
+                "name": "Service 1",
+                "image": "services/01JMWEWVHMCZEPKP0A0JPAB448.png",
+                "slug": "alkhdm-1",
+                "summary": "ahskdjhfjshdkfhsdkfjhskjdhfs",
+                "price": 1200,
+                "old_price": 1500
+            }
+        ],
+        "banks": [
+            {
+                "id": 1,
+                "name": "Elraghy",
+                "image": "banks/01JMWDX9TD6C7N42HGC2VQNS4Q.png",
+                "slug": "alraghy"
+            }
+        ],
+        "finances": [
+            {
+                "id": 2,
+                "name": "National Bank",
+                "image": "banks/01JMWDX9TD6C7N42HGC2VQNS4Q.png",
+                "slug": "national-bank"
+            },
+            {
+                "id": 3,
+                "name": "Arab Bank",
+                "image": "banks/01JMWDX9TD6C7N42HGC2VQNS4Q.png",
+                "slug": "arab-bank"
+            }
+        ],
+        "offers": [
+            {
+                "id": 4,
+                "name": "Special Offer 1",
+                "image": "banks/01JMWDX9TD6C7N42HGC2VQNS4Q.png",
+                "slug": "special-offer-1"
+            },
+            {
+                "id": 5,
+                "name": "Limited-Time Discount",
+                "image": "banks/01JMWDX9TD6C7N42HGC2VQNS4Q.png",
+                "slug": "limited-time-discount"
+            }
+        ],
+        "clients": [
+            {
+                "id": 1,
+                "name": "Bevis Albert",
+                "image": "clients/01JN966JFTVKDJ24GWQJSFNEGH.png"
+            }
+        ],
+        "testimonials": [
+            {
+                "id": 1,
+                "name": "Yoshio Odonnell",
+                "image": "testimonials/01JHKPK1G2TP9KYREXY7MKT511.png"
+            }
+        ]
+    }
+}

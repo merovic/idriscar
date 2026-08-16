@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarsView" customModule="IdrisCar" customModuleProvider="target">
+            <connections>
+                <outlet property="backButton" destination="qDB-nd-Pb4" id="7Ms-ej-Ujy"/>
+                <outlet property="container" destination="c6P-BD-B6g" id="j8g-C8-rrT"/>
+                <outlet property="searchTextField" destination="3D4-Kq-p6H" id="7sa-TQ-sIP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDB-nd-Pb4">
+                    <rect key="frame" x="16" y="59" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="8hv-7m-fsG"/>
+                        <constraint firstAttribute="width" constant="48" id="mWb-UC-9i2"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="backButton"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="invertedLoc" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="backPressed:" destination="-1" eventType="touchUpInside" id="kSN-WW-aTQ"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse Cars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obn-OG-7PD">
+                    <rect key="frame" x="144" y="72" width="105.33333333333331" height="21.666666666666671"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Browse Cars"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6P-BD-B6g">
+                    <rect key="frame" x="16" y="179" width="361" height="639"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="PQK-sJ-hWi">
+                    <rect key="frame" x="16" y="115" width="361" height="48"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PPc-aq-BAF">
+                            <rect key="frame" x="0.0" y="0.0" width="304" height="48"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search vehicle" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3D4-Kq-p6H">
+                                    <rect key="frame" x="42" y="0.0" width="262" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="48" id="irf-LC-zx4"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Search vehicle"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="textFieldDidReturn:" destination="-1" eventType="editingDidEndOnExit" id="aoJ-1B-bnm"/>
+                                    </connections>
+                                </textField>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Bq0-nF-7Fq">
+                                    <rect key="frame" x="16" y="15.999999999999996" width="18" height="16.333333333333332"/>
+                                    <color key="tintColor" systemColor="systemGrayColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="OKC-RG-HRV"/>
+                                        <constraint firstAttribute="width" constant="18" id="Sgk-ch-8xe"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstItem="3D4-Kq-p6H" firstAttribute="centerY" secondItem="PPc-aq-BAF" secondAttribute="centerY" id="483-JL-U9L"/>
+                                <constraint firstAttribute="trailing" secondItem="3D4-Kq-p6H" secondAttribute="trailing" id="CAs-zd-BdC"/>
+                                <constraint firstAttribute="height" constant="48" id="Q1G-FA-7lT"/>
+                                <constraint firstItem="3D4-Kq-p6H" firstAttribute="leading" secondItem="Bq0-nF-7Fq" secondAttribute="trailing" constant="8" symbolic="YES" id="QfV-Vr-GgP"/>
+                                <constraint firstItem="Bq0-nF-7Fq" firstAttribute="leading" secondItem="PPc-aq-BAF" secondAttribute="leading" constant="16" id="T9Z-bs-ORC"/>
+                                <constraint firstItem="Bq0-nF-7Fq" firstAttribute="centerY" secondItem="PPc-aq-BAF" secondAttribute="centerY" id="sn4-JF-Gsf"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.79607843140000001" green="0.81568627449999997" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLF-6N-SPY">
+                            <rect key="frame" x="313" y="0.0" width="48" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="smn-Mc-Hpj"/>
+                                <constraint firstAttribute="width" constant="48" id="tC1-d6-uOu"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="filtericon"/>
+                            <connections>
+                                <action selector="filterPressed:" destination="-1" eventType="touchUpInside" id="Cjy-XT-48b"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="c6P-BD-B6g" firstAttribute="top" secondItem="PQK-sJ-hWi" secondAttribute="bottom" constant="16" id="9S1-fP-97H"/>
+                <constraint firstItem="qDB-nd-Pb4" firstAttribute="centerY" secondItem="obn-OG-7PD" secondAttribute="centerY" id="Gnw-kS-Gc0"/>
+                <constraint firstItem="PQK-sJ-hWi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Hgo-UL-4lp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PQK-sJ-hWi" secondAttribute="trailing" constant="16" id="P3c-BC-6aV"/>
+                <constraint firstItem="c6P-BD-B6g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="RFV-WQ-BfM"/>
+                <constraint firstItem="obn-OG-7PD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="13" id="S4o-5x-g2m"/>
+                <constraint firstItem="obn-OG-7PD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="avX-vl-s3I"/>
+                <constraint firstItem="c6P-BD-B6g" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="daP-qB-G36"/>
+                <constraint firstItem="PQK-sJ-hWi" firstAttribute="top" secondItem="qDB-nd-Pb4" secondAttribute="bottom" constant="8" symbolic="YES" id="elf-Cj-2S5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="c6P-BD-B6g" secondAttribute="trailing" constant="16" id="iN5-Hu-wwY"/>
+                <constraint firstItem="qDB-nd-Pb4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="srl-HY-T7x"/>
+            </constraints>
+            <point key="canvasLocation" x="9.9236641221374047" y="20.422535211267608"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="backButton" width="48" height="48"/>
+        <image name="filtericon" width="48" height="48"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <systemColor name="systemGrayColor">
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
