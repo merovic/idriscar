@@ -27,6 +27,9 @@ class LoginViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
                 
     @Published var isAnimating = false
+    
+    // MARK: - Validation Errors
+    @Published var validationErrors: [String: [String]] = [:]
         
     //---------------------
         
@@ -50,16 +53,6 @@ class LoginViewModel: ObservableObject {
         coordinator?.goToForgetPassword()
     }
     
-    func checkForPhone(phone: String) -> String{
-        let phoneCode = "+966"
-        let fCode = phoneCode.replacingOccurrences(of: "+", with: "")
-        if !phone.starts(with: "0"){
-            return fCode + phone
-        }else{
-            return fCode + phone.dropFirst()
-        }
-    }
-    
     func login() {
         
         self.isAnimating = true
@@ -71,9 +64,15 @@ class LoginViewModel: ObservableObject {
                     switch completion {
                     case .finished:
                         print("Publisher stopped observing")
-                    case .failure(_):
+                    case .failure(let error):
                         self.isAnimating = false
-                        self.errorMessage = "Invalid credentials"
+                        if let apiError = error as? APIError,
+                           case .validation(let message, let errors) = apiError {
+                            self.validationErrors = errors
+                            self.errorMessage = self.formattedValidationMessage(message: message, errors: errors)
+                        } else {
+                            self.errorMessage = error.localizedDescription
+                        }
                     }
                 },
                 receiveValue: { response in
@@ -93,5 +92,10 @@ class LoginViewModel: ObservableObject {
     
     func switchPasswordEye(){
         self.passwordEyeOn.toggle()
+    }
+    
+    private func formattedValidationMessage(message: String, errors: [String: [String]]) -> String {
+        let validationMessages = errors.keys.sorted().flatMap { errors[$0] ?? [] }
+        return validationMessages.isEmpty ? message : validationMessages.joined(separator: "\n")
     }
 }

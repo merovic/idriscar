@@ -42,15 +42,15 @@ class AuthCoordinator : Coordinator, AuthBottomSheetDelegate {
         navigationController.pushViewController(sendOTPView, animated: true)
     }
     
-    func goToChooseTypeView(){
+    func goToChooseTypeView(phoneNumber: String){
         let chooseTypeView = ChooseTypeView()
-        chooseTypeView.viewModel = ChooseTypeViewModel(coordinator: self)
+        chooseTypeView.viewModel = ChooseTypeViewModel(phoneNumber: phoneNumber, coordinator: self)
         navigationController.pushViewController(chooseTypeView, animated: true)
     }
     
-    func goToCompleteRegistration(isCompany: Bool){
+    func goToCompleteRegistration(phoneNumber: String, isCompany: Bool){
         let completeRegistrationView = CompleteRegistrationView()
-        completeRegistrationView.viewModel = CompleteRegistrationViewModel(isCompany: isCompany, coordinator: self)
+        completeRegistrationView.viewModel = CompleteRegistrationViewModel(phoneNumber: phoneNumber, isCompany: isCompany, coordinator: self)
         navigationController.pushViewController(completeRegistrationView, animated: true)
     }
     
@@ -86,9 +86,9 @@ class AuthCoordinator : Coordinator, AuthBottomSheetDelegate {
         navigationController.pushViewController(forgetPasswordView, animated: true)
     }
     
-    func goToNewPasswordView(){
+    func goToNewPasswordView(phoneNumber: String){
         let newPasswordView = NewPasswordView()
-        newPasswordView.viewModel = NewPasswordViewModel(coordinator: self)
+        newPasswordView.viewModel = NewPasswordViewModel(phoneNumber: phoneNumber, coordinator: self)
         navigationController.pushViewController(newPasswordView, animated: true)
     }
     

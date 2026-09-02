@@ -71,22 +71,28 @@ class CarSelectionViewModel: ObservableObject {
                     self.versions = response.data?.versions ?? []
                     self.bodyTypes = response.data?.bodyTypes ?? []
                     
-                    self.filteredModels = self.filterModels(byBrandID: self.brands[0].id, in: self.models)
-                    self.filteredVersions = self.filterVersions(byModelID: self.models[0].id, in: self.versions)
+                    guard let firstBrand = self.brands.first else { return }
+                    self.filteredModels = self.filterModels(byBrandID: firstBrand.id, in: self.models)
+                    guard let firstModel = self.filteredModels.first else { return }
+                    self.filteredVersions = self.filterVersions(byModelID: firstModel.id, in: self.versions)
+                    guard let firstVersion = self.filteredVersions.first else { return }
                     
-                    self.selectedBrandName = response.data?.brands[0].name ?? ""
-                    self.selectedModelName = response.data?.models[0].name ?? ""
-                    self.selectedVersionName = response.data?.versions[0].name ?? ""
+                    self.selectedBrandName = firstBrand.name
+                    self.selectedModelName = firstModel.name
+                    self.selectedVersionName = firstVersion.name
                     
-                    self.selectedBrandID = response.data?.brands[0].id
-                    self.selectedModelID = response.data?.models[0].id
-                    self.selectedVersionID = response.data?.versions[0].id
+                    self.selectedBrandID = firstBrand.id
+                    self.selectedModelID = firstModel.id
+                    self.selectedVersionID = firstVersion.id
+                    self.getCar()
                 }
             )
             .store(in: &cancellables)
     }
     
     func getCar() {
+        self.selectedCar = nil
+        self.isAnimating = true
         dataRepository.getCars(request: CarsAPIRequest(
             brandId: self.selectedBrandID,
             modelId: self.selectedModelID,
@@ -103,11 +109,33 @@ class CarSelectionViewModel: ObservableObject {
                     }
                 },
                 receiveValue: { response in
-                    self.isAnimating = false
-                    guard let data = response.data?.data else { return }
-                    if !data.isEmpty {
-                        self.selectedCar = data[0]
+                    guard let car = response.data?.data.first else {
+                        self.selectedCar = nil
+                        self.isAnimating = false
+                        return
                     }
+                    self.getCarDetails(carID: car.id)
+                }
+            )
+            .store(in: &cancellables)
+    }
+    
+    private func getCarDetails(carID: Int) {
+        dataRepository.getCar(carID: String(carID))
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { (completion) in
+                    switch completion {
+                    case .finished:
+                        print("Publisher stopped observing")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                        self.isAnimating = false
+                    }
+                },
+                receiveValue: { response in
+                    self.isAnimating = false
+                    self.selectedCar = response.data
                 }
             )
             .store(in: &cancellables)

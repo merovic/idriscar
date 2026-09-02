@@ -40,7 +40,7 @@ class FAQView: UIViewController {
             .sink { errorMessage in
                 ToastManager.shared.showToast(
                     iconName: "erroricon",
-                    titleText: "FAQ",
+                    titleText: "FAQ".localized,
                     subtitleText: errorMessage,
                     hapticFeedback: .notification(type: .error)
                 )

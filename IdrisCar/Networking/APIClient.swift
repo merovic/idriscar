@@ -31,10 +31,14 @@ class APIClient {
                     }
                 })
                 .tryMap { data, response -> Data in
-                    guard let httpResponse = response as? HTTPURLResponse,
-                          (200...299).contains(httpResponse.statusCode) else {
+                    guard let httpResponse = response as? HTTPURLResponse else {
                         throw APIError.invalidResponse
                     }
+
+                    guard (200...299).contains(httpResponse.statusCode) else {
+                        throw parseAPIError(from: data)
+                    }
+
                     return data
                 }
                 .tryMap { data -> T in
@@ -52,6 +56,23 @@ class APIClient {
         } catch {
             print("Request creation failed with error: \(error)")
             return Fail(error: error).eraseToAnyPublisher()
+        }
+    }
+    
+    private static func parseAPIError(from data: Data) -> APIError {
+        do {
+            let response = try JSONDecoder().decode(
+                ValidationErrorResponse.self,
+                from: data
+            )
+
+            return .validation(
+                message: response.message,
+                errors: response.data
+            )
+
+        } catch {
+            return .invalidResponse
         }
     }
     
@@ -80,5 +101,36 @@ class APIClient {
 private extension DecodingError.Context {
     var codingPathString: String {
         codingPath.map { $0.stringValue }.joined(separator: " -> ")
+    }
+}
+
+struct ValidationErrorResponse: Decodable {
+    let success: Bool
+    let statusCode: Int?
+    let message: String
+    let data: [String: [String]]
+
+    enum CodingKeys: String, CodingKey {
+        case success
+        case statusCode = "status_code"
+        case message
+        case data
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        success = try container.decodeIfPresent(Bool.self, forKey: .success) ?? false
+        statusCode = try container.decodeIfPresent(Int.self, forKey: .statusCode)
+        message = try container.decodeIfPresent(String.self, forKey: .message) ?? ""
+        
+        if let errors = try? container.decode(
+            [String: [String]].self,
+            forKey: .data
+        ) {
+            data = errors
+        } else {
+            data = [:]
+        }
     }
 }

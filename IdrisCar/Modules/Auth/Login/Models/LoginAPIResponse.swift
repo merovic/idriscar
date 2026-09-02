@@ -20,10 +20,10 @@ struct User: Codable {
     let id: Int
     var name, lastName, email: String
     let companyName, companyEmail: String?
-    let isCompany: String
+    @FlexibleBool var isCompany: Bool?
     var phoneNumber: String
     let address: String?
-    let cityID: String
+    @FlexibleInt var cityID: Int?
     let contactOptions: [String]
 
     enum CodingKeys: String, CodingKey {

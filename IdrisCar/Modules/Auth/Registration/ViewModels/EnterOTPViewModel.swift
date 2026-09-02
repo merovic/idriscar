@@ -22,6 +22,7 @@ class EnterOTPViewModel: ObservableObject {
     @Published var codeText = ""
     @Published var errorMessage =  ""
     @Published var isAnimating = false
+    private var didNavigateAfterOTP = false
         
     //---------------------
     
@@ -36,26 +37,39 @@ class EnterOTPViewModel: ObservableObject {
     }
     
     func otpCheck() {
+        guard !isAnimating else { return }
+
         if !codeText.isEmpty {
             self.isAnimating = true
             dataService.checkOTP(request: CheckOTPAPIRequest(phoneNumber: phoneText, otp: codeText))
                 .receive(on: DispatchQueue.main)
                 .sink(
-                    receiveCompletion: { (completion) in
+                    receiveCompletion: { [weak self] (completion) in
+                        guard let self else { return }
+
                         switch completion {
                         case .finished:
                             print("Publisher stopped observing")
-                        case .failure(_):
+                        case .failure(let error):
                             self.isAnimating = false
+                            errorMessage = error.localizedDescription
                         }
                     },
-                    receiveValue: { [unowned self] response in
+                    receiveValue: { [weak self] response in
+                        guard let self else { return }
+
                         isAnimating = false
                         if response.success {
-                            if isForgetPassword {
-                                
-                            }else{
-                                coordinator?.goToChooseTypeView()
+                            guard !didNavigateAfterOTP else { return }
+
+                            didNavigateAfterOTP = true
+                            DispatchQueue.main.async { [weak self] in
+                                guard let self else { return }
+                                if self.isForgetPassword {
+                                    self.coordinator?.goToNewPasswordView(phoneNumber: self.phoneText)
+                                } else {
+                                    self.coordinator?.goToChooseTypeView(phoneNumber: self.phoneText)
+                                }
                             }
                         }else{
                             errorMessage = response.message
@@ -77,8 +91,9 @@ class EnterOTPViewModel: ObservableObject {
                     switch completion {
                     case .finished:
                         print("Publisher stopped observing")
-                    case .failure(_):
+                    case .failure(let error):
                         self.isAnimating = false
+                        self.errorMessage = error.localizedDescription
                     }
                 },
                 receiveValue: { response in
@@ -97,8 +112,9 @@ class EnterOTPViewModel: ObservableObject {
                     switch completion {
                     case .finished:
                         print("Publisher stopped observing")
-                    case .failure(_):
+                    case .failure(let error):
                         self.isAnimating = false
+                        self.errorMessage = error.localizedDescription
                     }
                 },
                 receiveValue: { response in
@@ -109,4 +125,3 @@ class EnterOTPViewModel: ObservableObject {
     }
         
 }
-

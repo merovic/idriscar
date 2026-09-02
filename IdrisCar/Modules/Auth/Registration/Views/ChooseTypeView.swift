@@ -49,7 +49,9 @@ class ChooseTypeView: UIViewController {
     
     func BindViews(){
         viewModel.$registrationType
-            .sink { [self] type in
+            .sink { [weak self] type in
+                guard let self else { return }
+
                 switch type {
                 case .company:
                     individualView.backgroundColor = UIColor.white
@@ -72,14 +74,14 @@ class ChooseTypeView: UIViewController {
             }.store(in: &viewModel.cancellables)
         
         individualGest.tapPublisher
-            .sink(receiveValue:{_ in
-                self.viewModel.registrationType = .individual
+            .sink(receiveValue:{ [weak self] _ in
+                self?.viewModel.registrationType = .individual
             })
             .store(in: &viewModel.cancellables)
         
         companyGest.tapPublisher
-            .sink(receiveValue:{_ in
-                self.viewModel.registrationType = .company
+            .sink(receiveValue:{ [weak self] _ in
+                self?.viewModel.registrationType = .company
             })
             .store(in: &viewModel.cancellables)
     }

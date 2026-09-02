@@ -16,6 +16,8 @@ class CustomCodeItemView: SwiftyCodeItemView {
     @IBOutlet weak var itemWidth: NSLayoutConstraint!
     
     override func awakeFromNib() {
+        super.awakeFromNib()
+
         isUserInteractionEnabled = false
         textField.text = ""
         borderView.layer.cornerRadius = 4

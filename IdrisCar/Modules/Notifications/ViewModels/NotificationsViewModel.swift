@@ -41,7 +41,6 @@ class NotificationsViewModel: ObservableObject {
                     case .finished:
                         print("Publisher stopped observing")
                     case .failure(let error):
-                        print(error.localizedDescription)
                         self.isAnimating = false
                     }
                 },

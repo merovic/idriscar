@@ -36,9 +36,29 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
-enum APIError: Error {
+enum APIError: LocalizedError {
     case invalidResponse
     case invalidData
+    case validation(message: String, errors: [String: [String]])
+
+    var errorDescription: String? {
+        switch self {
+
+        case .invalidResponse:
+            return "Invalid response"
+
+        case .invalidData:
+            return "Invalid data"
+
+        case .validation(let message, let errors):
+
+            let validationMessages = errors.values.flatMap { $0 }
+
+            return validationMessages.isEmpty
+                ? message
+                : validationMessages.joined(separator: "\n")
+        }
+    }
 }
 
 public typealias Parameters = [String: Any]?

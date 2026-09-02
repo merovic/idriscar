@@ -29,6 +29,9 @@ class CompleteRegistrationViewModel: ObservableObject {
     @Published var isTermsAccepted = false
     @Published var contactOptions: [String] = []
     
+    // MARK: - Validation Errors
+    @Published var validationErrors: [String: [String]] = [:]
+    
     // MARK: - UI States
     
     @Published var isAnimating = false
@@ -41,7 +44,8 @@ class CompleteRegistrationViewModel: ObservableObject {
     
     // MARK: - Init
     
-    init(isCompany: Bool, dataService: RegistrationRepository = RemoteRegistrationRepository(), coordinator: AuthCoordinator) {
+    init(phoneNumber: String,isCompany: Bool, dataService: RegistrationRepository = RemoteRegistrationRepository(), coordinator: AuthCoordinator) {
+        self.phoneNumber = phoneNumber
         self.isCompany = isCompany
         self.dataService = dataService
         self.coordinator = coordinator
@@ -80,7 +84,13 @@ class CompleteRegistrationViewModel: ObservableObject {
                         print("Signup publisher completed")
                     case .failure(let error):
                         self.isAnimating = false
-                        self.errorMessage = error.localizedDescription
+                        if let apiError = error as? APIError,
+                           case .validation(let message, let errors) = apiError {
+                            self.validationErrors = errors
+                            self.errorMessage = self.formattedValidationMessage(message: message, errors: errors)
+                        } else {
+                            self.errorMessage = error.localizedDescription
+                        }
                     }
                 },
                 receiveValue: { response in
@@ -143,5 +153,10 @@ class CompleteRegistrationViewModel: ObservableObject {
         }
         
         return true
+    }
+    
+    private func formattedValidationMessage(message: String, errors: [String: [String]]) -> String {
+        let validationMessages = errors.keys.sorted().flatMap { errors[$0] ?? [] }
+        return validationMessages.isEmpty ? message : validationMessages.joined(separator: "\n")
     }
 }

@@ -205,7 +205,6 @@
 		07429D992DF1BFDF00C6D82C /* WishListAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07429D982DF1BFD400C6D82C /* WishListAPIResponse.swift */; };
 		074FB18D2DDE7ACB0070D6E3 /* CharInImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074FB18C2DDE7AC30070D6E3 /* CharInImage.swift */; };
 		074FB18F2DDF74530070D6E3 /* CarsAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074FB18E2DDF74480070D6E3 /* CarsAPIRequest.swift */; };
-		074FB1922DE204270070D6E3 /* CxjToasts in Frameworks */ = {isa = PBXBuildFile; productRef = 074FB1912DE204270070D6E3 /* CxjToasts */; };
 		074FB1942DE20F000070D6E3 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074FB1932DE20EFF0070D6E3 /* ToastManager.swift */; };
 		074FB1AE2DE3C6FF0070D6E3 /* RequestCarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074FB1AD2DE3C6F20070D6E3 /* RequestCarCoordinator.swift */; };
 		074FB1B02DE4C44B0070D6E3 /* HomeCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074FB1AF2DE4C4360070D6E3 /* HomeCoordinatorDelegate.swift */; };
@@ -217,7 +216,6 @@
 		0762E5432FA529AA00996CD2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0762E5422FA529AA00996CD2 /* Localizable.xcstrings */; };
 		076761762D73994A00F2091B /* Pods_IdrisCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076761752D73994A00F2091B /* Pods_IdrisCar.framework */; };
 		076761772D73994A00F2091B /* Pods_IdrisCar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 076761752D73994A00F2091B /* Pods_IdrisCar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		076E35062D73E24D00EEC20D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 076E35052D73E24D00EEC20D /* SnapKit */; };
 		077ED59D2FA14DDD00E22B03 /* CarSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077ED59C2FA14DDD00E22B03 /* CarSelectionView.xib */; };
 		077ED59E2FA14DDD00E22B03 /* CarSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077ED59B2FA14DDD00E22B03 /* CarSelectionView.swift */; };
 		077ED5A02FA150D900E22B03 /* CarSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077ED59F2FA150D900E22B03 /* CarSelectionViewModel.swift */; };
@@ -233,7 +231,6 @@
 		0794381B2E0839DD00931FA9 /* CarGalleryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 079438192E0839DD00931FA9 /* CarGalleryView.xib */; };
 		0794381D2E083D6600931FA9 /* CarGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794381C2E083D5800931FA9 /* CarGalleryViewModel.swift */; };
 		0794381F2E0999D500931FA9 /* CarFavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0794381E2E0999B400931FA9 /* CarFavoritesManager.swift */; };
-		079438222E0C763D00931FA9 /* ShimmerEffect in Frameworks */ = {isa = PBXBuildFile; productRef = 079438212E0C763D00931FA9 /* ShimmerEffect */; };
 		07B257A82DF1E3770037B524 /* CarsReqestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B257A72DF1E3760037B524 /* CarsReqestsViewModel.swift */; };
 		07B257AD2DF1FACE0037B524 /* ContactUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B257AC2DF1FACE0037B524 /* ContactUsView.xib */; };
 		07B257AE2DF1FACE0037B524 /* ContactUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B257AB2DF1FACE0037B524 /* ContactUsView.swift */; };
@@ -561,9 +558,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				076761762D73994A00F2091B /* Pods_IdrisCar.framework in Frameworks */,
-				074FB1922DE204270070D6E3 /* CxjToasts in Frameworks */,
-				076E35062D73E24D00EEC20D /* SnapKit in Frameworks */,
-				079438222E0C763D00931FA9 /* ShimmerEffect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1491,9 +1485,6 @@
 			mainGroup = 07F2D78C2D6E1F1D00F50C8C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				076E35042D73E24D00EEC20D /* XCRemoteSwiftPackageReference "SnapKit" */,
-				074FB1902DE204270070D6E3 /* XCRemoteSwiftPackageReference "CxjToasts" */,
-				079438202E0C763D00931FA9 /* XCRemoteSwiftPackageReference "Shimmer-SwiftUI-Modifier" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 07F2D7962D6E1F1D00F50C8C /* Products */;
@@ -1953,7 +1944,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = IdrisCar/IdrisCar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = L64UAXPU9J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IdrisCar/Info.plist;
@@ -1967,7 +1958,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amirahmed.IdrisCar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1984,7 +1975,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = IdrisCar/IdrisCar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = L64UAXPU9J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IdrisCar/Info.plist;
@@ -1998,7 +1989,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amirahmed.IdrisCar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2246,51 +2237,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		074FB1902DE204270070D6E3 /* XCRemoteSwiftPackageReference "CxjToasts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/coxijcake/CxjToasts";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.9;
-			};
-		};
-		076E35042D73E24D00EEC20D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-		079438202E0C763D00931FA9 /* XCRemoteSwiftPackageReference "Shimmer-SwiftUI-Modifier" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/0xYanis/Shimmer-SwiftUI-Modifier?tab=readme-ov-file";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		074FB1912DE204270070D6E3 /* CxjToasts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 074FB1902DE204270070D6E3 /* XCRemoteSwiftPackageReference "CxjToasts" */;
-			productName = CxjToasts;
-		};
-		076E35052D73E24D00EEC20D /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 076E35042D73E24D00EEC20D /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		079438212E0C763D00931FA9 /* ShimmerEffect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 079438202E0C763D00931FA9 /* XCRemoteSwiftPackageReference "Shimmer-SwiftUI-Modifier" */;
-			productName = ShimmerEffect;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 07F2D78D2D6E1F1D00F50C8C /* Project object */;
 }

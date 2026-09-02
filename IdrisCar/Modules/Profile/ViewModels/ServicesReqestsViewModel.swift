@@ -44,8 +44,9 @@ class ServicesReqestsViewModel: ObservableObject {
                 switch completion {
                 case .finished:
                     print("Publisher stopped observing")
-                case .failure(_):
+                case .failure(let error):
                     self.isAnimating = false
+                    self.errorMessage = error.localizedDescription
                 }
             },
             receiveValue: { [self] response in

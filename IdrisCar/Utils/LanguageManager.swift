@@ -53,6 +53,10 @@ final class LanguageManager: ObservableObject {
         Locale(identifier: languageCode)
     }
 
+    var semanticContentAttribute: UISemanticContentAttribute {
+        isRTL ? .forceRightToLeft : .forceLeftToRight
+    }
+
     private var localizedBundle: Bundle {
         guard let path = Bundle.main.path(forResource: languageCode, ofType: "lproj"),
               let bundle = Bundle(path: path) else {
@@ -66,7 +70,7 @@ final class LanguageManager: ObservableObject {
     }
 
     func applyLanguageSettings() {
-        let direction: UISemanticContentAttribute = isRTL ? .forceRightToLeft : .forceLeftToRight
+        let direction = semanticContentAttribute
         UIView.appearance().semanticContentAttribute = direction
         UINavigationBar.appearance().semanticContentAttribute = direction
         UITabBar.appearance().semanticContentAttribute = direction
@@ -75,9 +79,16 @@ final class LanguageManager: ObservableObject {
             .compactMap { $0 as? UIWindowScene }
             .flatMap { $0.windows }
             .forEach { window in
-                window.semanticContentAttribute = direction
-                window.subviews.forEach { $0.semanticContentAttribute = direction }
+                applySemanticContentAttribute(direction, to: window)
+                window.rootViewController?.view.semanticContentAttribute = direction
+                window.setNeedsLayout()
+                window.layoutIfNeeded()
             }
+    }
+
+    private func applySemanticContentAttribute(_ direction: UISemanticContentAttribute, to view: UIView) {
+        view.semanticContentAttribute = direction
+        view.subviews.forEach { applySemanticContentAttribute(direction, to: $0) }
     }
 
     private func localizedLanguageName(for code: String) -> String {

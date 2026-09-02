@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -47,7 +47,7 @@
                                         <action selector="skipClicked:" destination="-1" eventType="touchUpInside" id="gls-Zl-vf4"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy way to find the right car" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFX-aV-nuQ">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy way to find the right car" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFX-aV-nuQ">
                                     <rect key="frame" x="16" y="114" width="361" height="114.66666666666669"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="48"/>
                                     <color key="textColor" white="0.97176387470000003" alpha="1" colorSpace="calibratedWhite"/>
@@ -56,7 +56,7 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Easy way to find the right car"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ke9-z6-QJk">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ke9-z6-QJk">
                                     <rect key="frame" x="16" y="244.66666666666666" width="361" height="38.333333333333343"/>
                                     <string key="text">Welcome back, Enter your credentials to
 access your account</string>
@@ -128,7 +128,7 @@ access your account</string>
                                                                     <rect key="frame" x="0.0" y="24.333333333333371" width="361" height="59"/>
                                                                     <subviews>
                                                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Phone/Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SEa-58-vxw">
-                                                                            <rect key="frame" x="16" y="0.0" width="345" height="59"/>
+                                                                            <rect key="frame" x="16" y="0.0" width="329" height="59"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="59" id="oLc-WE-onv"/>
                                                                             </constraints>
@@ -143,7 +143,7 @@ access your account</string>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="59" id="bl7-MQ-f5R"/>
                                                                         <constraint firstItem="SEa-58-vxw" firstAttribute="leading" secondItem="H8v-S0-kNp" secondAttribute="leading" constant="16" id="ks7-sk-8WQ"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="SEa-58-vxw" secondAttribute="trailing" id="pZ6-RF-IOM"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="SEa-58-vxw" secondAttribute="trailing" constant="16" id="pZ6-RF-IOM"/>
                                                                         <constraint firstItem="SEa-58-vxw" firstAttribute="centerY" secondItem="H8v-S0-kNp" secondAttribute="centerY" id="yr9-Nx-rxe"/>
                                                                     </constraints>
                                                                 </view>

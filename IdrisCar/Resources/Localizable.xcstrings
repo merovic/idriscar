@@ -441,6 +441,17 @@
         }
       }
     },
+    "Don't worry! it happens. please input your phone number associated with your account." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا تقلق! هذا يحدث. يرجى إدخال رقم هاتفك المرتبط بحسابك."
+          }
+        }
+      }
+    },
     "Easy way to find the right car" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -551,6 +562,39 @@
         }
       }
     },
+    "Enter your credentials to access your account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدخل بيانات الاعتماد الخاصة بك\nالوصول إلى حسابك"
+          }
+        }
+      }
+    },
+    "Failed to reset password: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل إعادة تعيين كلمة المرور: %@"
+          }
+        }
+      }
+    },
+    "Failed to reset password. Please try again." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل إعادة تعيين كلمة المرور. يرجى المحاولة مرة أخرى."
+          }
+        }
+      }
+    },
     "Failed to send message. Please try again." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -616,6 +660,17 @@
         }
       }
     },
+    "Fill out Your personal information to create List of gear Idris account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدخل معلوماتك الشخصية لإنشاء حساب على منصة \"إدريس\"."
+          }
+        }
+      }
+    },
     "Filter" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -623,17 +678,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تصفية"
-          }
-        }
-      }
-    },
-    "Finder is a leading digital marketplace for the automotive industry that connects car shoppers with sellers." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "يُعد Finder سوقًا رقميًا رائدًا لصناعة السيارات يربط مشتري السيارات بالبائعين."
           }
         }
       }
@@ -769,6 +813,17 @@
         }
       }
     },
+    "Idriscar is a leading digital marketplace for the automotive industry that connects car shoppers with sellers." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يُعد Idriscar سوقًا رقميًا رائدًا لصناعة السيارات يربط مشتري السيارات بالبائعين."
+          }
+        }
+      }
+    },
     "Individual Account" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -820,6 +875,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "لنبدأ"
+          }
+        }
+      }
+    },
+    "Login Failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل تسجيل الدخول"
           }
         }
       }
@@ -1006,7 +1072,7 @@
       }
     },
     "Offer" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -1037,6 +1103,17 @@
         }
       }
     },
+    "OTP Failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل رمز التحقق"
+          }
+        }
+      }
+    },
     "Password" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1055,6 +1132,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم تغيير كلمة المرور!"
+          }
+        }
+      }
+    },
+    "Password must be at least 8 characters." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل."
+          }
+        }
+      }
+    },
+    "Password Reset Failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل إعادة تعيين كلمة المرور"
           }
         }
       }
@@ -1218,6 +1317,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "السعر:"
+          }
+        }
+      }
+    },
+    "Registration Failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل التسجيل"
           }
         }
       }
@@ -1787,6 +1897,17 @@
         }
       }
     },
+    "We’re pleased to inform you that your request has been successfully completed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يسعدنا إبلاغك بأنه تم إكمال طلبك بنجاح."
+          }
+        }
+      }
+    },
     "Welcome back" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1827,17 +1948,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "مرحبًا بك في إدريس!"
-          }
-        }
-      }
-    },
-    "We’re pleased to inform you that your request has been successfully completed." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "يسعدنا إبلاغك بأنه تم إكمال طلبك بنجاح."
           }
         }
       }
@@ -1967,6 +2077,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "بريدك الإلكتروني"
+          }
+        }
+      }
+    },
+    "Your First Name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اسمك الأول"
           }
         }
       }

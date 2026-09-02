@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -95,8 +95,8 @@
                         <constraint firstAttribute="height" constant="4" id="PEv-mO-aUQ"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify Your Mobile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAy-vO-qMG">
-                    <rect key="frame" x="16" y="248.00000000000003" width="269.66666666666669" height="38.333333333333343"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify Your Mobile" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAy-vO-qMG">
+                    <rect key="frame" x="16" y="248.00000000000003" width="361" height="38.333333333333343"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -104,7 +104,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Verify Your Mobile"/>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill out Your personal information to create List of gear Idris account" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeA-dv-ihR">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill out Your personal information to create List of gear Idris account" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeA-dv-ihR">
                     <rect key="frame" x="16" y="294.33333333333331" width="361" height="33.666666666666686"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.20784313730000001" green="0.2470588235" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
@@ -132,6 +132,9 @@
                                         <constraint firstAttribute="width" constant="18" id="Gxa-Lk-MyL"/>
                                         <constraint firstAttribute="height" constant="18" id="Td0-au-FEW"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="invertedLoc" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Individual Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqd-Va-xBW">
                                     <rect key="frame" x="56" y="35.333333333333314" width="144" height="19.333333333333329"/>
@@ -181,6 +184,9 @@
                                         <constraint firstAttribute="width" constant="18" id="AVq-jX-zoF"/>
                                         <constraint firstAttribute="height" constant="18" id="auq-jG-ZUm"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="invertedLoc" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRf-7M-gEn">
                                     <rect key="frame" x="56" y="35.333333333333314" width="142" height="19.333333333333329"/>
@@ -223,7 +229,7 @@
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxY-Yg-z2J">
-                    <rect key="frame" x="16" y="712" width="361" height="60"/>
+                    <rect key="frame" x="16" y="678" width="361" height="60"/>
                     <color key="backgroundColor" name="AccentColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="9V2-ri-qI7"/>
@@ -260,6 +266,7 @@
                 <constraint firstItem="YeA-dv-ihR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="eXo-fc-uMq"/>
                 <constraint firstItem="sAy-vO-qMG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="fFM-Eq-Jm7"/>
                 <constraint firstItem="v4O-X9-atS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fyx-x9-rCA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sAy-vO-qMG" secondAttribute="trailing" constant="16" id="jZI-KZ-9aq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OxY-Yg-z2J" secondAttribute="bottom" constant="46" id="t7G-bd-6je"/>
                 <constraint firstItem="17Z-fu-EZJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="u8I-Ia-ZWx"/>
                 <constraint firstItem="4ep-nU-2pS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="y09-Ed-JH3"/>

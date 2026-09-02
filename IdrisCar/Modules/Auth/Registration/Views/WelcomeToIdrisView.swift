@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 enum BottomSheetPage: Identifiable {
     case newPassword, accountCreated

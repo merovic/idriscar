@@ -34,7 +34,7 @@ class TermsView: UIViewController {
             .sink { errorMessage in
                 ToastManager.shared.showToast(
                     iconName: "erroricon",
-                    titleText: "Terms",
+                    titleText: "Terms".localized,
                     subtitleText: errorMessage,
                     hapticFeedback: .notification(type: .error)
                 )

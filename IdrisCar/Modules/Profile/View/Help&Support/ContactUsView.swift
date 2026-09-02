@@ -41,7 +41,7 @@ class ContactUsView: UIViewController {
             .sink { errorMessage in
                 ToastManager.shared.showToast(
                     iconName: "erroricon",
-                    titleText: "Message Failed",
+                    titleText: "Message Failed".localized,
                     subtitleText: errorMessage,
                     hapticFeedback: .notification(type: .error)
                 )

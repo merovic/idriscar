@@ -28,7 +28,7 @@ class ForgetPasswordView: UIViewController {
         BindViews()
     }
     
-    func BindViews(){
+    func BindViews() {
         viewModel.$isAnimating
             .receive(on: DispatchQueue.main)
             .assign(to: \.isVisible, on: loadingView)
@@ -37,6 +37,18 @@ class ForgetPasswordView: UIViewController {
         phoneNumberTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: \.phoneNumber, on: viewModel)
+            .store(in: &viewModel.cancellables)
+        
+        viewModel.$errorMessage
+            .filter { !$0.isEmpty }
+            .sink { errorMessage in
+                ToastManager.shared.showToast(
+                    iconName: "erroricon",
+                    titleText: "OTP Failed".localized,
+                    subtitleText: errorMessage,
+                    hapticFeedback: .notification(type: .error)
+                )
+            }
             .store(in: &viewModel.cancellables)
     }
     

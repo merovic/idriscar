@@ -72,7 +72,7 @@ class LoginView: UIViewController {
             .sink { errorMessage in
                 ToastManager.shared.showToast(
                     iconName: "erroricon",
-                    titleText: "Registration Failed",
+                    titleText: "Login Failed".localized,
                     subtitleText: errorMessage,
                     hapticFeedback: .notification(type: .error)
                 )

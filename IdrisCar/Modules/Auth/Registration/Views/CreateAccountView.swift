@@ -34,7 +34,7 @@ class CreateAccountView: UIViewController {
             .sink { errorMessage in
                 ToastManager.shared.showToast(
                     iconName: "erroricon",
-                    titleText: "Registration Failed",
+                    titleText: "Registration Failed".localized,
                     subtitleText: errorMessage,
                     hapticFeedback: .notification(type: .error)
                 )

@@ -15,11 +15,16 @@ class EnterOTPRegistrationView: UIViewController {
     var viewModel: EnterOTPViewModel!
     
     @IBOutlet weak var otpView: CustomCodeView!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         otpView.delegate = self
         BindViews()
+    }
+
+    deinit {
+        otpView?.delegate = nil
     }
     
     func BindViews(){
@@ -27,9 +32,25 @@ class EnterOTPRegistrationView: UIViewController {
             .receive(on: DispatchQueue.main)
             .assign(to: \.isVisible, on: loadingView)
             .store(in: &viewModel.cancellables)
+        
+        phoneNumberLabel.text = viewModel.phoneText
+        
+        // Bind errorMessage to show toast
+        viewModel.$errorMessage
+            .filter { !$0.isEmpty }
+            .sink { errorMessage in
+                ToastManager.shared.showToast(
+                    iconName: "erroricon",
+                    titleText: "OTP Failed".localized,
+                    subtitleText: errorMessage,
+                    hapticFeedback: .notification(type: .error)
+                )
+            }
+            .store(in: &viewModel.cancellables)
     }
 
     @IBAction func continueClicked(_ sender: Any) {
+        view.endEditing(true)
         self.viewModel.otpCheck()
     }
     
@@ -41,6 +62,6 @@ class EnterOTPRegistrationView: UIViewController {
 extension EnterOTPRegistrationView: SwiftyCodeViewDelegate {
     func codeView(sender: SwiftyCodeView, didFinishInput code: String) -> Bool {
         self.viewModel.codeText = code
-        return true
+        return false
     }
 }

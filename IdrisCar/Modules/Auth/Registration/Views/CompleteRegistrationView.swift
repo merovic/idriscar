@@ -94,10 +94,17 @@ class CompleteRegistrationView: UIViewController {
             .sink { errorMessage in
                 ToastManager.shared.showToast(
                     iconName: "erroricon",
-                    titleText: "Registration Failed",
+                    titleText: "Registration Failed".localized,
                     subtitleText: errorMessage,
                     hapticFeedback: .notification(type: .error)
                 )
+            }
+            .store(in: &viewModel.cancellables)
+        
+        viewModel.$phoneNumber
+            .compactMap { $0 }
+            .sink { phoneNumber in
+                self.phoneNumberTextField.text = phoneNumber
             }
             .store(in: &viewModel.cancellables)
         

@@ -10,9 +10,12 @@ import BottomSheet
 
 class NewPasswordView: UIViewController {
     
+    private let loadingView = LoadingAnimation()
+    
     var viewModel: NewPasswordViewModel!
     
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var passwordView: UIView!{
         didSet {
@@ -67,6 +70,11 @@ class NewPasswordView: UIViewController {
     
     func BindView(){
         
+        viewModel.$isAnimating
+            .receive(on: DispatchQueue.main)
+            .assign(to: \.isVisible, on: loadingView)
+            .store(in: &viewModel.cancellables)
+        
         passwordTextField.textPublisher
             .receive(on: DispatchQueue.main)
             .assign(to: \.passwordText, on: viewModel)
@@ -101,15 +109,28 @@ class NewPasswordView: UIViewController {
             })
             .store(in: &viewModel.cancellables)
         
+        viewModel.$errorMessage
+            .compactMap { $0?.isEmpty == false ? $0 : nil }
+            .sink { errorMessage in
+                ToastManager.shared.showToast(
+                    iconName: "erroricon",
+                    titleText: "Password Reset Failed".localized,
+                    subtitleText: errorMessage,
+                    hapticFeedback: .notification(type: .error)
+                )
+            }
+            .store(in: &viewModel.cancellables)
+        
         keyboardHelper = KeyboardHelper {animation, keyboardFrame, duration in
             switch animation {
             case .keyboardWillShow:
                 self.headerView.isHidden = true
+                self.topConstraint.constant = 12
             case .keyboardWillHide:
                 self.headerView.isHidden = false
+                self.topConstraint.constant = 0
             }
         }
-        
     }
     
     @IBAction func backPressed(_ sender: Any) {
@@ -119,5 +140,4 @@ class NewPasswordView: UIViewController {
     @IBAction func confirmClicked(_ sender: Any) {
         viewModel.showPasswordChanged()
     }
-    
 }

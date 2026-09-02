@@ -130,8 +130,17 @@ extension AppCoordinator: AppCoordinatorDelegate {
     }
     
     func didRequestChangeLanguage() {
-        children.removeAll()
-        navigationController.setViewControllers([], animated: false)
-        showIntroVideo()
+        if let sceneDelegate = UIApplication.shared.connectedScenes
+            .compactMap({ $0.delegate as? SceneDelegate })
+            .first {
+            sceneDelegate.restartApp()
+        } else {
+            LanguageManager.shared.applyLanguageSettings()
+            navigationController.view.semanticContentAttribute = LanguageManager.shared.semanticContentAttribute
+            navigationController.navigationBar.semanticContentAttribute = LanguageManager.shared.semanticContentAttribute
+            children.removeAll()
+            navigationController.setViewControllers([], animated: false)
+            showIntroVideo()
+        }
     }
 }

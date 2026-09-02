@@ -102,6 +102,13 @@ class CarSelectionView: UIViewController {
             .assign(to: \.text!, on: versionLabel)
             .store(in: &viewModel.cancellables)
         
+        viewModel.$selectedCar
+            .receive(on: DispatchQueue.main)
+            .sink { [weak addToComparisonButton] car in
+                car == nil ? addToComparisonButton?.disable() : addToComparisonButton?.enable()
+            }
+            .store(in: &viewModel.cancellables)
+        
         vehicleGest.tapPublisher
             .sink(receiveValue:{_ in
                 self.openSelectionView(title: "Brand".localized, items: viewModel.brands.map { $0.asSelectionItem }, key: .brand)

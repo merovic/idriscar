@@ -39,7 +39,7 @@ class SecurityLoginView: UIViewController {
             .sink { errorMessage in
                 ToastManager.shared.showToast(
                     iconName: "erroricon",
-                    titleText: "Change Password Failed",
+                    titleText: "Change Password Failed".localized,
                     subtitleText: errorMessage,
                     hapticFeedback: .notification(type: .error)
                 )

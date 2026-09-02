@@ -42,7 +42,7 @@ class ServicesReqestsView: UIViewController {
             .sink { errorMessage in
                 ToastManager.shared.showToast(
                     iconName: "erroricon",
-                    titleText: "Car Requests",
+                    titleText: "Car Requests".localized,
                     subtitleText: errorMessage,
                     hapticFeedback: .notification(type: .error)
                 )

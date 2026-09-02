@@ -14,14 +14,17 @@ class ChooseTypeViewModel: ObservableObject {
     
     @Published var registrationType: RegistrationType = .individual
     
+    var phoneNumber: String = ""
+    
     weak var coordinator: AuthCoordinator?
 
-    init(coordinator: AuthCoordinator) {
+    init(phoneNumber: String, coordinator: AuthCoordinator) {
+        self.phoneNumber = phoneNumber
         self.coordinator = coordinator
     }
     
     func goToCompleteRegistration() {
-        coordinator?.goToCompleteRegistration(isCompany: registrationType == .company)
+        coordinator?.goToCompleteRegistration(phoneNumber: phoneNumber, isCompany: registrationType == .company)
     }
 }
 

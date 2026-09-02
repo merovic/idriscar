@@ -41,7 +41,7 @@ class AboutUsView: UIViewController {
             .sink { errorMessage in
                 ToastManager.shared.showToast(
                     iconName: "erroricon",
-                    titleText: "About",
+                    titleText: "About".localized,
                     subtitleText: errorMessage,
                     hapticFeedback: .notification(type: .error)
                 )

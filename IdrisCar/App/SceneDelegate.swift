@@ -18,15 +18,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let _ = (scene as? UIWindowScene) else { return }
         
+        restartApp()
+    }
+
+    func restartApp() {
+        LanguageManager.shared.applyLanguageSettings()
+
         let navigationCon = UINavigationController.init()
         navigationCon.isNavigationBarHidden = true
+        navigationCon.view.semanticContentAttribute = LanguageManager.shared.semanticContentAttribute
+        navigationCon.navigationBar.semanticContentAttribute = LanguageManager.shared.semanticContentAttribute
         
         appCoordinator = AppCoordinator(navigationController: navigationCon)
         appCoordinator!.start()
 
         window!.rootViewController = navigationCon
+        window!.semanticContentAttribute = LanguageManager.shared.semanticContentAttribute
         window!.makeKeyAndVisible()
-
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -59,4 +67,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-
