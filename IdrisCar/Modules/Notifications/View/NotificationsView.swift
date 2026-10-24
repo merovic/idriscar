@@ -13,8 +13,6 @@ class NotificationsView: UIViewController {
         
     var viewModel: NotificationsViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var searchBar: UITextField!
@@ -34,11 +32,6 @@ class NotificationsView: UIViewController {
     func BindViews(){
         guard let viewModel = viewModel else { return }
         
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
-        
         backButton.tapPublisher
             .sink { _ in
                 self.navigationController?.popViewController(animated: true)
@@ -54,11 +47,33 @@ struct NotificationsSwiftUIView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 10) {
-                ForEach(0..<viewModel.notifications.count, id: \.self) { index in
-                    NotificationItem(notification: viewModel.notifications[index])
+                if viewModel.isAnimating && viewModel.notifications.isEmpty {
+                    ForEach((0..<8).map { "notification-skeleton-\($0)" }, id: \.self) { _ in
+                        NotificationSkeletonItem()
+                    }
+                } else {
+                    ForEach(0..<viewModel.notifications.count, id: \.self) { index in
+                        NotificationItem(notification: viewModel.notifications[index])
+                    }
                 }
             }
         }
+    }
+}
+
+struct NotificationSkeletonItem: View {
+    var body: some View {
+        HStack(alignment: .top, spacing: 10) {
+            ShimmerSkeletonBlock(width: 52, height: 52, cornerRadius: 8)
+            
+            VStack(alignment: .leading, spacing: 8) {
+                ShimmerSkeletonLine(width: 220)
+                ShimmerSkeletonLine(width: 120, height: 12)
+            }
+            
+            Spacer()
+        }
+        .padding(.vertical, 8)
     }
 }
 

@@ -11,12 +11,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarDetailsView" customModule="IdrisCar" customModuleProvider="target">
             <connections>
                 <outlet property="mainContainer" destination="SKS-fb-Drc" id="Drq-CW-FbU"/>
+                <outlet property="footerContainer" destination="7oM-SQ-uqQ" id="Anm-Hf-VYr"/>
+                <outlet property="footerHeightConstraint" destination="MT3-io-cCA" id="iHq-ak-HYr"/>
                 <outlet property="priceAfterLabel" destination="B9G-EC-MIN" id="G6J-Jz-sUD"/>
                 <outlet property="priceAfterStack" destination="djg-5F-xkV" id="dWc-2p-jhn"/>
                 <outlet property="priceBeforeLabel" destination="TnM-Ui-Zer" id="Jso-Dx-t6A"/>
                 <outlet property="priceBeforeStack" destination="WYD-jR-HZd" id="cj5-te-SzP"/>
                 <outlet property="priceLabel" destination="EYs-kS-e1k" id="GP5-sn-0QM"/>
                 <outlet property="requestCarButton" destination="4JS-Mk-4IX" id="bCR-j9-eId"/>
+                <outlet property="requestCarButtonBottomConstraint" destination="C0b-7i-ri0" id="4JP-r4-I0D"/>
+                <outlet property="requestCarButtonHeightConstraint" destination="hrh-y7-PcB" id="AtG-Jj-HLX"/>
+                <outlet property="priceLabelButtonSpacingConstraint" destination="vhd-d4-fv8" id="f6e-7f-sIF"/>
+                <outlet property="priceStackButtonSpacingConstraint" destination="gd5-OW-a8u" id="Xxg-09-Z7B"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

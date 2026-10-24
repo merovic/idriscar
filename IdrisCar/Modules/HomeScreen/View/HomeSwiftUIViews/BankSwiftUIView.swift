@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct BanksListView: View {
     let banks: [HomeModel]
+    var isLoading: Bool = false
     
     var body: some View {
         VStack{
@@ -35,15 +36,35 @@ struct BanksListView: View {
                 let itemWidth = UIScreen.main.bounds.width - 32
                 
                 HStack(spacing: 16) {
-                    ForEach(0..<banks.count, id: \.self) { index in
-                        BankItemView(bank: banks[index])
-                            .frame(width: itemWidth)
+                    if isLoading && banks.isEmpty {
+                        ForEach((0..<3).map { "bank-skeleton-\($0)" }, id: \.self) { _ in
+                            BankSkeletonItemView()
+                                .frame(width: itemWidth)
+                        }
+                    } else {
+                        ForEach(0..<banks.count, id: \.self) { index in
+                            BankItemView(bank: banks[index])
+                                .frame(width: itemWidth)
+                        }
                     }
                 }
                 .padding(.trailing, 16) // ✅ only after items
             }
             .frame(height: 120)
         }
+    }
+}
+
+struct BankSkeletonItemView: View {
+    var body: some View {
+        VStack {
+            ShimmerSkeletonBlock(height: 80, cornerRadius: 6)
+                .frame(maxWidth: .infinity)
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 100)
+        .background(Color(.systemGray6))
+        .cornerRadius(6)
     }
 }
 

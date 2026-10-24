@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct CarsListView: View {
     let cars: [Car]
+    var isLoading: Bool = false
     var onCarSelected: ((Car) -> Void)?
     var onViewMoreTapped: (() -> Void)?
     
@@ -39,14 +40,21 @@ struct CarsListView: View {
                 let itemWidth = UIScreen.main.bounds.width - 32 // 16 padding each side
                 
                 HStack(spacing: 16) {
-                    ForEach(0..<cars.count, id: \.self) { index in
-                        CarItemView(
-                            car: cars[index],
-                            onCarSelected: {
-                                onCarSelected?(cars[index])
-                            }
-                        )
-                        .frame(width: itemWidth)
+                    if isLoading && cars.isEmpty {
+                        ForEach((0..<3).map { "home-car-skeleton-\($0)" }, id: \.self) { _ in
+                            CarSkeletonItemView()
+                                .frame(width: itemWidth)
+                        }
+                    } else {
+                        ForEach(0..<cars.count, id: \.self) { index in
+                            CarItemView(
+                                car: cars[index],
+                                onCarSelected: {
+                                    onCarSelected?(cars[index])
+                                }
+                            )
+                            .frame(width: itemWidth)
+                        }
                     }
                 }
                 .padding(.leading, 0)
@@ -54,6 +62,31 @@ struct CarsListView: View {
             }
             .frame(height: 420)
         }
+    }
+}
+
+struct CarSkeletonItemView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            ShimmerSkeletonBlock(height: 222, cornerRadius: 6)
+                .frame(maxWidth: .infinity)
+            ShimmerSkeletonBlock(width: 80, height: 28, cornerRadius: 2)
+            ShimmerSkeletonLine(width: 180, height: 20)
+            ShimmerSkeletonLine(width: 120, height: 18)
+            
+            HStack {
+                ShimmerSkeletonBlock(height: 48, cornerRadius: 8)
+                    .frame(maxWidth: .infinity)
+                ShimmerSkeletonBlock(width: 48, height: 48, cornerRadius: 4)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(Color.white)
+        .overlay(
+            RoundedRectangle(cornerRadius: 6)
+                .stroke(Color("BorderColor"), lineWidth: 1)
+        )
     }
 }
 

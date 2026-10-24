@@ -17,8 +17,6 @@ class FilterView: UIViewController {
     
     var viewModel: FilterViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var resetButton: UIButton!
@@ -38,11 +36,6 @@ class FilterView: UIViewController {
     
     func BindViews(){
         guard let viewModel = viewModel else { return }
-        
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
         
         viewModel.$backPressed.sink { [self] state in
             if state {
@@ -78,25 +71,30 @@ struct FilterSwiftUIView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
-                            ForEach(0..<viewModel.brands.count, id: \.self) { index in
-                                VStack {
-                                    WebImage(url: URL(string: viewModel.brands[index].image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))
-                                      .resizable()
-                                      .indicator(.activity)
-                                      .aspectRatio(contentMode: .fit)
-                                      .frame(width: 84, height: 84)
-                                    
-                                    Text(viewModel.brands[index].name)
-                                        .font(.system(size: 14, weight: .medium))
-                                        .foregroundColor(.black)
+                            if viewModel.isAnimating && viewModel.brands.isEmpty {
+                                ForEach((0..<6).map { "filter-brand-skeleton-\($0)" }, id: \.self) { _ in
+                                    BrandSkeletonItemView()
                                 }
-                                .frame(width: 105, height: 130)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(viewModel.selectedBrandID == viewModel.brands[index].id ? Color("AccentColor") : Color("BorderColor"), lineWidth: 1)
-                                )
-                                .onTapGesture {
-                                    viewModel.selectedBrandID = viewModel.brands[index].id
+                            } else {
+                                ForEach(viewModel.brands, id: \.id) { brand in
+                                    VStack {
+                                        WebImage(url: URL(string: brand.image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))
+                                          .resizable()
+                                          .aspectRatio(contentMode: .fit)
+                                          .frame(width: 84, height: 84)
+                                        
+                                        Text(brand.name)
+                                            .font(.system(size: 14, weight: .medium))
+                                            .foregroundColor(.black)
+                                    }
+                                    .frame(width: 105, height: 130)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 4)
+                                            .stroke(viewModel.selectedBrandID == brand.id ? Color("AccentColor") : Color("BorderColor"), lineWidth: 1)
+                                    )
+                                    .onTapGesture {
+                                        viewModel.selectedBrandID = brand.id
+                                    }
                                 }
                             }
                         }

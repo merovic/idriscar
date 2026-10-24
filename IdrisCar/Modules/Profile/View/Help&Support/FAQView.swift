@@ -12,8 +12,6 @@ class FAQView: UIViewController {
     
     var viewModel: FAQViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var container: UIView!
     
@@ -29,11 +27,6 @@ class FAQView: UIViewController {
     
     func BindViews(){
         guard let viewModel = viewModel else { return }
-        
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
         
         viewModel.$errorMessage
             .compactMap { $0.isEmpty ? nil : $0 }
@@ -61,14 +54,18 @@ struct FAQSwiftUIView: View {
     
     var body: some View {
         ScrollView{
-            VStack(alignment: .leading, spacing: 10) {
-                Text(viewModel.faqList?.name ?? "")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundColor(.black)
-                
-                Text(viewModel.faqList?.description ?? "")
-                    .font(.system(size: 16, weight: .regular))
-                    .foregroundColor(.gray)
+            if viewModel.isAnimating && viewModel.faqList == nil {
+                FAQSkeletonView()
+            } else {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(viewModel.faqList?.name ?? "")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.black)
+                    
+                    Text(viewModel.faqList?.description ?? "")
+                        .font(.system(size: 16, weight: .regular))
+                        .foregroundColor(.gray)
+                }
             }
             
             if let questions = viewModel.faqList?.questionsAnswers {
@@ -79,6 +76,25 @@ struct FAQSwiftUIView: View {
                 }
             }
             
+        }
+    }
+}
+
+struct FAQSkeletonView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            ShimmerSkeletonLine(width: 180, height: 20)
+            ShimmerSkeletonLine(width: 260)
+            ShimmerSkeletonLine(width: 220)
+            
+            ForEach((0..<6).map { "faq-skeleton-\($0)" }, id: \.self) { _ in
+                HStack {
+                    ShimmerSkeletonLine(width: 240)
+                    Spacer()
+                    ShimmerSkeletonBlock(width: 24, height: 24, cornerRadius: 12)
+                }
+                .padding()
+            }
         }
     }
 }

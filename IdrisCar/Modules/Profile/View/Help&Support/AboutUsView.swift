@@ -13,8 +13,6 @@ class AboutUsView: UIViewController {
     
     var viewModel: AboutUsViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var container: UIView!
     
@@ -30,11 +28,6 @@ class AboutUsView: UIViewController {
     
     func BindViews(){
         guard let viewModel = viewModel else { return }
-        
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
         
         viewModel.$errorMessage
             .compactMap { $0.isEmpty ? nil : $0 }
@@ -64,11 +57,35 @@ struct AboutUsSwiftUIView: View {
     var body: some View {
         ScrollView{
             VStack(spacing: 10) {
-                ForEach(viewModel.aboutUsList, id: \.id) { item in
-                    AboutUsItemView(item: item)
+                if viewModel.isAnimating && viewModel.aboutUsList.isEmpty {
+                    ForEach((0..<4).map { "about-us-skeleton-\($0)" }, id: \.self) { _ in
+                        AboutUsSkeletonItemView()
+                    }
+                } else {
+                    ForEach(viewModel.aboutUsList, id: \.id) { item in
+                        AboutUsItemView(item: item)
+                    }
                 }
             }
         }
+    }
+}
+
+struct AboutUsSkeletonItemView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            ShimmerSkeletonBlock(width: 64, height: 64, cornerRadius: 8)
+            ShimmerSkeletonLine(width: 180, height: 20)
+            ShimmerSkeletonLine(width: 280)
+            ShimmerSkeletonLine(width: 230)
+            ShimmerSkeletonLine(width: 250)
+        }
+        .padding()
+        .background(Color.white)
+        .overlay(
+            RoundedRectangle(cornerRadius: 4)
+                .stroke(Color("BorderColor"), lineWidth: 1)
+        )
     }
 }
 

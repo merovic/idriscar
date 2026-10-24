@@ -13,8 +13,6 @@ class ContactUsTextView: UIViewController {
     
     var viewModel: ContactUsTextViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var container: UIView!
     
@@ -30,11 +28,6 @@ class ContactUsTextView: UIViewController {
     
     func BindViews(){
         guard let viewModel = viewModel else { return }
-        
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
         
         viewModel.$errorMessage
             .compactMap { $0.isEmpty ? nil : $0 }
@@ -63,7 +56,13 @@ struct ContactUsTextSwiftUIView: View {
     
     var body: some View {
         ScrollView{
-            if viewModel.websiteInfo != nil{
+            if viewModel.isAnimating && viewModel.websiteInfo == nil {
+                VStack(spacing: 10) {
+                    ForEach((0..<4).map { "contact-us-skeleton-\($0)" }, id: \.self) { _ in
+                        ContactUsSkeletonItemView()
+                    }
+                }
+            } else if viewModel.websiteInfo != nil{
                 VStack(spacing: 10) {
                     ContactUsItemView(image: "working_hours", title: "Working Hours".localized, description: viewModel.websiteInfo!.workingHours.map { $0.hours }.joined(separator: ", "))
                     ContactUsItemView(image: "call_us", title: "Call us directly".localized, description: viewModel.websiteInfo!.mobileNumbers.map { $0.mobile }.joined(separator: ", "))
@@ -73,6 +72,28 @@ struct ContactUsTextSwiftUIView: View {
             }
             
         }
+    }
+}
+
+struct ContactUsSkeletonItemView: View {
+    var body: some View {
+        HStack(alignment: .top, spacing: 14) {
+            ShimmerSkeletonBlock(width: 58, height: 58, cornerRadius: 8)
+            
+            VStack(alignment: .leading, spacing: 8) {
+                ShimmerSkeletonLine(width: 170, height: 20)
+                ShimmerSkeletonLine(width: 240)
+                ShimmerSkeletonLine(width: 180)
+            }
+            
+            Spacer()
+        }
+        .padding()
+        .background(Color.white)
+        .overlay(
+            RoundedRectangle(cornerRadius: 4)
+                .stroke(Color("BorderColor"), lineWidth: 1)
+        )
     }
 }
 

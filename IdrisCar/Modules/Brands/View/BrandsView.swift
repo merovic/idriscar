@@ -12,11 +12,7 @@ import SDWebImageSwiftUI
 
 class BrandsView: UIViewController {
     
-    private var bindings = Set<AnyCancellable>()
-    
     var viewModel: BrandsViewModel?
-    
-    private let loadingView = LoadingAnimation()
 
     @IBOutlet weak var container: UIView!
     
@@ -35,12 +31,7 @@ class BrandsView: UIViewController {
         self.container.EmbedSwiftUIView(view: BrandsSwiftUIView(viewModel: viewModel!), parent: self)
     }
     
-    func BindViews(){
-        viewModel!.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &bindings)
-    }
+    func BindViews(){}
 }
 
 
@@ -56,30 +47,36 @@ struct BrandsSwiftUIView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(0..<viewModel.brands.count, id: \.self) { index in
-                    VStack {
-                        WebImage(url: URL(string: viewModel.brands[index].image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))
-                            .resizable()
-                            .indicator(.activity)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 84, height: 84)
-                        
-                        Text(viewModel.brands[index].name)
-                            .lineLimit(2)
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(.black)
-                            .padding(.horizontal, 5)
+                if viewModel.isAnimating && viewModel.brands.isEmpty {
+                    ForEach((0..<8).map { "brand-skeleton-\($0)" }, id: \.self) { _ in
+                        BrandSkeletonItemView()
+                            .frame(maxWidth: .infinity, minHeight: 130)
                     }
-                    .frame(maxWidth: .infinity, minHeight: 130)
-                    .padding(.horizontal, 5)
-                    .background(Color("BackgroundGray"))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color("BorderColor"), lineWidth: 1)
-                    )
-                    .onTapGesture {
-                        viewModel.selectedBrandID = viewModel.brands[index].id
-                        viewModel.goToCars()
+                } else {
+                    ForEach(viewModel.brands, id: \.id) { brand in
+                        VStack {
+                            WebImage(url: URL(string: brand.image.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""))
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 84, height: 84)
+                            
+                            Text(brand.name)
+                                .lineLimit(2)
+                                .font(.system(size: 14, weight: .medium))
+                                .foregroundColor(.black)
+                                .padding(.horizontal, 5)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 130)
+                        .padding(.horizontal, 5)
+                        .background(Color("BackgroundGray"))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color("BorderColor"), lineWidth: 1)
+                        )
+                        .onTapGesture {
+                            viewModel.selectedBrandID = brand.id
+                            viewModel.goToCars()
+                        }
                     }
                 }
             }

@@ -254,6 +254,7 @@
 		07BBEF162E0310C70093B7A2 /* AboutUsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07BBEF142E0310C70093B7A2 /* AboutUsView.xib */; };
 		07CFA33E2DE5FC93001A90D9 /* IdrisSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07CFA33D2DE5FC93001A90D9 /* IdrisSelectionView.xib */; };
 		07CFA33F2DE5FC93001A90D9 /* IdrisSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CFA33C2DE5FC93001A90D9 /* IdrisSelectionView.swift */; };
+		07DE1C6F3052F20400F81A96 /* ShimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DE1C6E3052F1FC00F81A96 /* ShimmerEffect.swift */; };
 		7392BD8C8AF28313CF4C6E9B /* Pods_IdrisCar_IdrisCarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 056C42B1AA7E1D5BC547549F /* Pods_IdrisCar_IdrisCarUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -539,6 +540,7 @@
 		07BBEF142E0310C70093B7A2 /* AboutUsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsView.xib; sourceTree = "<group>"; };
 		07CFA33C2DE5FC93001A90D9 /* IdrisSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdrisSelectionView.swift; sourceTree = "<group>"; };
 		07CFA33D2DE5FC93001A90D9 /* IdrisSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdrisSelectionView.xib; sourceTree = "<group>"; };
+		07DE1C6E3052F1FC00F81A96 /* ShimmerEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerEffect.swift; sourceTree = "<group>"; };
 		07F2D7952D6E1F1D00F50C8C /* IdrisCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdrisCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F2D7AB2D6E1F1F00F50C8C /* IdrisCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdrisCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F2D7B52D6E1F1F00F50C8C /* IdrisCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdrisCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -993,6 +995,7 @@
 		0717D7F02DD37BE700C2ACAE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				07DE1C6E3052F1FC00F81A96 /* ShimmerEffect.swift */,
 				0717D7DB2DD37BE700C2ACAE /* CountryPicker */,
 				0717D7DF2DD37BE700C2ACAE /* Validation */,
 				074FB1932DE20EFF0070D6E3 /* ToastManager.swift */,
@@ -1734,6 +1737,7 @@
 				07BBEEFE2E030AC60093B7A2 /* WebsiteInfoAPIResponse.swift in Sources */,
 				0717D8342DD37BE700C2ACAE /* PasswordChangedView.swift in Sources */,
 				0717D8352DD37BE700C2ACAE /* LoginAPIRequest.swift in Sources */,
+				07DE1C6F3052F20400F81A96 /* ShimmerEffect.swift in Sources */,
 				0717D8362DD37BE700C2ACAE /* LoginAPIResponse.swift in Sources */,
 				0717D8372DD37BE700C2ACAE /* AppLanguage.swift in Sources */,
 				0717D8382DD37BE700C2ACAE /* LoginDataService.swift in Sources */,
@@ -1958,7 +1962,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amirahmed.IdrisCar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1989,7 +1993,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.amirahmed.IdrisCar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -15,8 +15,6 @@ class CarsView: UIViewController {
     
     var viewModel: CarsViewModel?
     
-    private let loadingView = LoadingAnimation()
-    
     @IBOutlet weak var backButton: UIButton!
 
     @IBOutlet weak var searchTextField: UITextField!
@@ -60,11 +58,6 @@ class CarsView: UIViewController {
     
     func BindViews() {
         guard let viewModel = viewModel else { return }
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &bindings)
-        
         viewModel.$isBackButtonVisible
             .receive(on: DispatchQueue.main)
             .map { !($0 ?? false) }
@@ -85,20 +78,39 @@ struct CarsSwiftUIView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(0..<viewModel.brands.count, id: \.self) { index in
-                        Text(viewModel.brands[index].name)
-                            .frame(width: 118, height: 42)
-                            .background(Color.white)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 4)
-                                    .stroke(viewModel.selectedBrandIndex == viewModel.brands[index].id ? SwiftUI.Color("AccentColor") : Color("BorderColor"), lineWidth: 1)
-                            )
-                            .onTapGesture {
-                                viewModel.selectBrand(index: viewModel.brands[index].id)
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        if viewModel.isAnimating && viewModel.brands.isEmpty {
+                            ForEach((0..<5).map { "cars-brand-skeleton-\($0)" }, id: \.self) { _ in
+                                ShimmerSkeletonBlock(width: 118, height: 42, cornerRadius: 4)
                             }
+                        } else {
+                            ForEach(viewModel.brands, id: \.id) { brand in
+                                Text(brand.name)
+                                    .frame(width: 118, height: 42)
+                                    .background(Color.white)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 4)
+                                            .stroke(viewModel.selectedBrandIndex == brand.id ? SwiftUI.Color("AccentColor") : Color("BorderColor"), lineWidth: 1)
+                                    )
+                                    .id(brand.id)
+                                    .onTapGesture {
+                                        viewModel.selectBrand(index: brand.id)
+                                        scrollToSelectedBrand(using: proxy, brandID: brand.id)
+                                    }
+                            }
+                        }
                     }
+                }
+                .onAppear {
+                    scrollToSelectedBrand(using: proxy, brandID: viewModel.selectedBrandIndex)
+                }
+                .onChange(of: viewModel.selectedBrandIndex) { _, brandID in
+                    scrollToSelectedBrand(using: proxy, brandID: brandID)
+                }
+                .onChange(of: viewModel.brands) { _, _ in
+                    scrollToSelectedBrand(using: proxy, brandID: viewModel.selectedBrandIndex)
                 }
             }
             
@@ -121,13 +133,29 @@ struct CarsSwiftUIView: View {
             }
             
             VStack(spacing: 10) {
-                ForEach(0..<viewModel.cars.count, id: \.self) { index in
-                    CarItemView(car: viewModel.cars[index]) {
-                        viewModel.selectedCarID = viewModel.cars[index].id
-                        viewModel.goToCarDetails()
+                if viewModel.isAnimating && viewModel.cars.isEmpty {
+                    ForEach((0..<4).map { "cars-list-skeleton-\($0)" }, id: \.self) { _ in
+                        CarSkeletonItemView()
+                    }
+                } else {
+                    ForEach(0..<viewModel.cars.count, id: \.self) { index in
+                        CarItemView(car: viewModel.cars[index]) {
+                            viewModel.selectedCarID = viewModel.cars[index].id
+                            viewModel.goToCarDetails()
+                        }
                     }
                 }
             }.padding(.top, 10)
+        }
+    }
+    
+    private func scrollToSelectedBrand(using proxy: ScrollViewProxy, brandID: Int?) {
+        guard let brandID = brandID else { return }
+        
+        DispatchQueue.main.async {
+            withAnimation {
+                proxy.scrollTo(brandID, anchor: .center)
+            }
         }
     }
 }

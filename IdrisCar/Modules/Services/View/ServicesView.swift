@@ -13,8 +13,6 @@ class ServicesView: UIViewController {
     
     var viewModel: ServicesViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var searchBar: UITextField!
@@ -39,11 +37,6 @@ class ServicesView: UIViewController {
     func BindViews(){
         guard let viewModel = viewModel else { return }
         
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
-        
         viewModel.$isBackButtonVisible
             .receive(on: DispatchQueue.main)
             .map { !($0 ?? false) }
@@ -59,10 +52,16 @@ struct ServicesSwiftUIView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 10) {
-                ForEach(0..<viewModel.services.count, id: \.self) { index in
-                    ServiceItemView(service: viewModel.services[index]) {
-                        viewModel.selectedServiceID = viewModel.services[index].id
-                        viewModel.showServiceDetails()
+                if viewModel.isAnimating && viewModel.services.isEmpty {
+                    ForEach((0..<5).map { "services-list-skeleton-\($0)" }, id: \.self) { _ in
+                        ServiceSkeletonItemView()
+                    }
+                } else {
+                    ForEach(0..<viewModel.services.count, id: \.self) { index in
+                        ServiceItemView(service: viewModel.services[index]) {
+                            viewModel.selectedServiceID = viewModel.services[index].id
+                            viewModel.showServiceDetails()
+                        }
                     }
                 }
             }

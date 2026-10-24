@@ -24,6 +24,12 @@ class CarDetailsView: UIViewController {
     @IBOutlet weak var priceAfterLabel: UILabel!
     
     @IBOutlet weak var priceAfterStack: UIStackView!
+    @IBOutlet weak var footerContainer: UIView!
+    @IBOutlet weak var footerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var requestCarButtonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var requestCarButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var priceLabelButtonSpacingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var priceStackButtonSpacingConstraint: NSLayoutConstraint!
     @IBOutlet weak var priceLabel: UILabel! {
         didSet {
             priceLabel.text = "Price".localized
@@ -39,6 +45,12 @@ class CarDetailsView: UIViewController {
         super.viewDidLoad()
         AttachViews()
         BindViews()
+        updateRequestCarButtonVisibility()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateRequestCarButtonVisibility()
     }
     
     func AttachViews() {
@@ -83,16 +95,19 @@ class CarDetailsView: UIViewController {
         viewModel.$car
             .sink { [weak self] car in
                 guard let self = self else { return }
+                
                 if let oldPrice = car?.oldPrice {
                     priceBeforeLabel.text = oldPrice
-                    priceBeforeStack.isHidden = false
                 }
+                priceBeforeStack.isHidden = car?.oldPrice == nil
                 
                 if let price = car?.price {
                     priceAfterLabel.text = String(price)
-                    priceAfterStack.isHidden = false
-                    priceLabel.isHidden = false
                 }
+                priceAfterStack.isHidden = car?.price == nil
+                priceLabel.isHidden = car?.oldPrice == nil && car?.price == nil
+                
+                updateRequestCarButtonVisibility()
             }
             .store(in: &viewModel.cancellables)
         
@@ -120,6 +135,32 @@ class CarDetailsView: UIViewController {
                 viewModel.goToRequestCarFlow()
             }
             .store(in: &viewModel.cancellables)
+    }
+    
+    private func updateRequestCarButtonVisibility() {
+        let isLoggedIn = LoginDataService.shared.isLoggedIn()
+        let hasPriceContent = viewModel?.car?.oldPrice != nil || viewModel?.car?.price != nil
+        let footerHeight: CGFloat
+        let spacing: CGFloat = isLoggedIn && hasPriceContent ? 20 : 0
+        
+        switch (isLoggedIn, hasPriceContent) {
+        case (true, true):
+            footerHeight = 167
+        case (true, false), (false, true):
+            footerHeight = 90
+        case (false, false):
+            footerHeight = 0
+        }
+        
+        requestCarButton.isHidden = !isLoggedIn
+        footerContainer.isHidden = footerHeight == 0
+        footerHeightConstraint.constant = footerHeight
+        requestCarButtonHeightConstraint.constant = isLoggedIn ? 60 : 0
+        requestCarButtonBottomConstraint.constant = footerHeight == 0 ? 0 : 30
+        priceLabelButtonSpacingConstraint.constant = spacing
+        priceStackButtonSpacingConstraint.constant = spacing
+        
+        view.layoutIfNeeded()
     }
 }
 

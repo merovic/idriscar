@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct ServicesListView: View {
     let services: [Service]
+    var isLoading: Bool = false
     var onServiceSelected: ((Service) -> Void)?
     var onViewMoreTapped: (() -> Void)?
     
@@ -41,20 +42,52 @@ struct ServicesListView: View {
                 let itemWidth = UIScreen.main.bounds.width - 32
                 
                 HStack(spacing: 16) {
-                    ForEach(services, id: \.id) { service in
-                        ServiceItemView(
-                            service: service,
-                            onRequestTapped: {
-                                onServiceSelected?(service)
-                            }
-                        )
-                        .frame(width: itemWidth)
+                    if isLoading && services.isEmpty {
+                        ForEach((0..<3).map { "home-service-skeleton-\($0)" }, id: \.self) { _ in
+                            ServiceSkeletonItemView()
+                                .frame(width: itemWidth)
+                        }
+                    } else {
+                        ForEach(services, id: \.id) { service in
+                            ServiceItemView(
+                                service: service,
+                                onRequestTapped: {
+                                    onServiceSelected?(service)
+                                }
+                            )
+                            .frame(width: itemWidth)
+                        }
                     }
                 }
                 .padding(.trailing, 16) // ✅ only space AFTER last item
             }
             .frame(height: 200)
         }
+    }
+}
+
+struct ServiceSkeletonItemView: View {
+    var body: some View {
+        HStack(spacing: 12) {
+            ShimmerSkeletonBlock(width: 136, height: 160, cornerRadius: 4)
+            
+            VStack(alignment: .leading, spacing: 12) {
+                ShimmerSkeletonLine(width: 140, height: 18)
+                ShimmerSkeletonLine(width: 110)
+                ShimmerSkeletonLine(width: 170)
+                ShimmerSkeletonLine(width: 145)
+                Spacer()
+                ShimmerSkeletonBlock(height: 42, cornerRadius: 8)
+            }
+        }
+        .padding(10)
+        .background(Color.white)
+        .overlay(
+            RoundedRectangle(cornerRadius: 4)
+                .stroke(Color("BorderColor"), lineWidth: 1)
+        )
+        .frame(maxWidth: .infinity)
+        .frame(height: 180)
     }
 }
 

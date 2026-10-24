@@ -13,8 +13,6 @@ class CarGalleryView: UIViewController {
     
     var viewModel: CarGalleryViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var container: UIView!
     
@@ -30,11 +28,6 @@ class CarGalleryView: UIViewController {
     
     func BindViews(){
         guard let viewModel = viewModel else { return }
-        
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
         
         viewModel.$errorMessage
             .compactMap { $0.isEmpty ? nil : $0 }
@@ -65,11 +58,17 @@ struct CarGallerySwiftUIView: View {
             VStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(0..<viewModel.albums.count, id: \.self) { index in
-                            AlbumItemView(album: viewModel.albums[index])
-                                .onTapGesture {
-                                    viewModel.selectedAlbum = viewModel.albums[index]
-                                }
+                        if viewModel.isAnimating && viewModel.albums.isEmpty {
+                            ForEach((0..<4).map { "gallery-album-skeleton-\($0)" }, id: \.self) { _ in
+                                GalleryAlbumSkeletonItemView()
+                            }
+                        } else {
+                            ForEach(0..<viewModel.albums.count, id: \.self) { index in
+                                AlbumItemView(album: viewModel.albums[index])
+                                    .onTapGesture {
+                                        viewModel.selectedAlbum = viewModel.albums[index]
+                                    }
+                            }
                         }
                     }
                 }
@@ -173,6 +172,26 @@ struct AlbumItemView: View {
                     .multilineTextAlignment(.leading)
                 Spacer()
             }
+        }
+        .padding(10)
+        .background(Color("BackgroundGray"))
+        .cornerRadius(4)
+        .frame(width: 186, height: 186)
+    }
+}
+
+struct GalleryAlbumSkeletonItemView: View {
+    var body: some View {
+        VStack(alignment: .center, spacing: 10) {
+            ShimmerSkeletonBlock(width: 170, height: 120, cornerRadius: 4)
+            
+            VStack(alignment: .leading, spacing: 6) {
+                ShimmerSkeletonLine(width: 120, height: 12)
+                ShimmerSkeletonLine(width: 145, height: 12)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Spacer()
         }
         .padding(10)
         .background(Color("BackgroundGray"))

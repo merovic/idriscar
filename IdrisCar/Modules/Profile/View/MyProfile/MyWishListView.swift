@@ -13,8 +13,6 @@ class MyWishListView: UIViewController {
         
     var viewModel: MyWishListViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var removeAllButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var container: UIView!
@@ -34,11 +32,6 @@ class MyWishListView: UIViewController {
     
     func BindViews(){
         guard let viewModel = viewModel else { return }
-        
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
         
         viewModel.$errorMessage
             .compactMap { $0.isEmpty ? nil : $0 }
@@ -77,7 +70,14 @@ struct MyWishListSwiftUIView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            if viewModel.wishList.isEmpty {
+            if viewModel.isAnimating && viewModel.wishList.isEmpty {
+                VStack(spacing: 10) {
+                    ForEach((0..<4).map { "wishlist-skeleton-\($0)" }, id: \.self) { _ in
+                        CarSkeletonItemView()
+                    }
+                }
+                .padding(.vertical)
+            } else if viewModel.wishList.isEmpty {
                 VStack(spacing: 16) {
                     Image(systemName: "heart.slash")
                         .resizable()

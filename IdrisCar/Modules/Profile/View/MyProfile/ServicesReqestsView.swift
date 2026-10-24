@@ -13,8 +13,6 @@ class ServicesReqestsView: UIViewController {
     
     var viewModel: ServicesReqestsViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var container: UIView!
     
@@ -31,11 +29,6 @@ class ServicesReqestsView: UIViewController {
     
     func BindViews(){
         guard let viewModel = viewModel else { return }
-        
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
         
         viewModel.$errorMessage
             .compactMap { $0.isEmpty ? nil : $0 }
@@ -62,7 +55,13 @@ struct ServicesReqestsSwiftUIView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false){
-            if viewModel.servicesRequests.isEmpty {
+            if viewModel.isAnimating && viewModel.servicesRequests.isEmpty {
+                VStack {
+                    ForEach((0..<3).map { "service-request-skeleton-\($0)" }, id: \.self) { _ in
+                        RequestSkeletonItemView()
+                    }
+                }
+            } else if viewModel.servicesRequests.isEmpty {
                 VStack(spacing: 12) {
                     Image(systemName: "wrench.and.screwdriver")
                         .font(.system(size: 50))

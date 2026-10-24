@@ -13,8 +13,6 @@ class OffersView: UIViewController {
         
     var viewModel: OffersViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var searchBar: UITextField!
@@ -39,11 +37,6 @@ class OffersView: UIViewController {
     func BindViews(){
         guard let viewModel = viewModel else { return }
 
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
-        
         viewModel.$isBackButtonVisible
             .receive(on: DispatchQueue.main)
             .map { !($0 ?? false) }
@@ -64,7 +57,16 @@ struct OffersSwiftUIView: View {
     
     var body: some View {
         Group {
-            if viewModel.offers.isEmpty {
+            if viewModel.isAnimating && viewModel.offers.isEmpty {
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 10) {
+                        ForEach((0..<4).map { "offers-list-skeleton-\($0)" }, id: \.self) { _ in
+                            OfferSkeletonItemView()
+                        }
+                    }
+                    .padding(.vertical)
+                }
+            } else if viewModel.offers.isEmpty {
                 VStack(spacing: 8) {
                     Image(systemName: "tray")
                         .font(.system(size: 40))

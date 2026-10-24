@@ -13,8 +13,6 @@ class CarsReqestsView: UIViewController {
     
     var viewModel: CarsReqestsViewModel?
     
-    private let loadingView = LoadingAnimation()
-
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var container: UIView!
     
@@ -31,11 +29,6 @@ class CarsReqestsView: UIViewController {
     
     func BindViews(){
         guard let viewModel = viewModel else { return }
-        
-        viewModel.$isAnimating
-            .receive(on: DispatchQueue.main)
-            .assign(to: \.isVisible, on: loadingView)
-            .store(in: &viewModel.cancellables)
         
         viewModel.$errorMessage
             .compactMap { $0.isEmpty ? nil : $0 }
@@ -63,7 +56,13 @@ struct CarsReqestsSwiftUIView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            if viewModel.carRequests.isEmpty {
+            if viewModel.isAnimating && viewModel.carRequests.isEmpty {
+                VStack {
+                    ForEach((0..<3).map { "car-request-skeleton-\($0)" }, id: \.self) { _ in
+                        RequestSkeletonItemView()
+                    }
+                }
+            } else if viewModel.carRequests.isEmpty {
                 VStack(spacing: 12) {
                     Image(systemName: "car")
                         .font(.system(size: 50))
@@ -88,6 +87,37 @@ struct CarsReqestsSwiftUIView: View {
                 }
             }
         }
+    }
+}
+
+struct RequestSkeletonItemView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            ShimmerSkeletonBlock(height: 222, cornerRadius: 6)
+                .frame(maxWidth: .infinity)
+            ShimmerSkeletonLine(width: 180, height: 20)
+                .padding(.horizontal)
+            
+            VStack(spacing: 12) {
+                ForEach(0..<4, id: \.self) { _ in
+                    HStack {
+                        ShimmerSkeletonLine(width: 70)
+                        Spacer()
+                        ShimmerSkeletonLine(width: 110)
+                    }
+                }
+                
+                ShimmerSkeletonBlock(height: 48, cornerRadius: 8)
+                    .frame(maxWidth: .infinity)
+            }
+            .padding()
+        }
+        .background(Color.white)
+        .overlay(
+            RoundedRectangle(cornerRadius: 6)
+                .stroke(Color("BorderColor"), lineWidth: 1)
+        )
+        .padding()
     }
 }
 

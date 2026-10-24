@@ -19,12 +19,14 @@ struct HomeScreenSwiftUIView: View {
                     guard let image = item.image else { return nil }
                     return CarouselItem(imagePath: image)
                 },
+                isLoading: viewModel.isAnimating,
                 selectedSliderImage: .constant(nil)
             )
             
-            if !viewModel.brands.isEmpty {
+            if viewModel.isAnimating || !viewModel.brands.isEmpty {
                 CarBrandsView(
                     brands: viewModel.brands,
+                    isLoading: viewModel.isAnimating,
                     onBrandSelected: { selectedBrand in
                         print("Selected Brand: \(selectedBrand.name)")
                         viewModel.goToCarsWithBrand(brandID: String(selectedBrand.id))
@@ -35,9 +37,10 @@ struct HomeScreenSwiftUIView: View {
                 )
             }
             
-            if !viewModel.cars.isEmpty {
+            if viewModel.isAnimating || !viewModel.cars.isEmpty {
                 CarsListView(
                     cars: viewModel.cars,
+                    isLoading: viewModel.isAnimating,
                     onCarSelected: { selectedCar in
                         print("Selected Car: \(selectedCar.name)")
                         viewModel.selectedCar = selectedCar
@@ -50,9 +53,10 @@ struct HomeScreenSwiftUIView: View {
                 .padding(.vertical)
             }
             
-            if !viewModel.services.isEmpty {
+            if viewModel.isAnimating || !viewModel.services.isEmpty {
                 ServicesListView(
                     services: viewModel.services,
+                    isLoading: viewModel.isAnimating,
                     onServiceSelected: { selectedService in
                         print("Selected Service: \(selectedService.name)")
                         viewModel.selectedService = selectedService
@@ -66,9 +70,10 @@ struct HomeScreenSwiftUIView: View {
                 .padding(.vertical)
             }
             
-            if !viewModel.offers.isEmpty {
+            if viewModel.isAnimating || !viewModel.offers.isEmpty {
                 OffersListSwiftUIView(
                     offers: viewModel.offers,
+                    isLoading: viewModel.isAnimating,
                     onOfferSelected: { selectedOffer in
                         print("Selected Offer: \(selectedOffer.name)")
                         viewModel.selectedOffer = selectedOffer
@@ -82,8 +87,11 @@ struct HomeScreenSwiftUIView: View {
                 .padding(.vertical)
             }
             
-            if !viewModel.banks.isEmpty {
-                BanksListView(banks: viewModel.banks)
+            if viewModel.isAnimating || !viewModel.banks.isEmpty {
+                BanksListView(
+                    banks: viewModel.banks,
+                    isLoading: viewModel.isAnimating
+                )
                     .padding(.vertical)
             }
         }
